@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title>{{'pending' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="bg_color" fullscreen>
+  <ion-list lines="none">
+      <div class="list_header ion-text-center animate__animated animate__fadeInUp">
+          <ion-icon class="zmdi zmdi-check-all animate__animated animate__zoomIn"></ion-icon>
+          <h1>{{'pending' | translate}} !!</h1>
+      </div>
+      <ion-item class="animate__animated animate__fadeInUp">
+          <div class="item_inner">
+              <ion-textarea ></ion-textarea>
+          </div>
+      </ion-item>
+     
+      
+      
+      <p class="animate__animated animate__fadeInUp">{{'sent_on' | translate}} 15 June, 2019 11:49 am</p>
+  </ion-list>
+</ion-content>
+
+
+<ion-footer class="ion-no-border animate__animated animate__fadeInUp">
+  <ion-row>
+      <ion-col size="6">
+          <ion-button size="large" shape="block" class="btn" (click)="tabs()">{{'cancel' | translate}}</ion-button>
+      </ion-col>
+  </ion-row>
+</ion-footer>

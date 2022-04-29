@@ -1,0 +1,83 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{'account' | translate}}</ion-title>
+    </ion-toolbar>
+    <div class="banner d-flex" (click)="profile()">
+        <div class="img_box center_img">
+            <img src="assets/imgs/profile.png" class="crop_img">
+        </div>
+        <div class="text">
+            <h2 class="animate__animated animate__fadeInUp">Sam Smith</h2>
+            <h3 class="animate__animated animate__fadeInUp">{{'view_profile' | translate}}</h3>
+        </div>
+    </div>
+
+    <div *ngIf="config.demoMode" (click)="buyappalert()" class="buy_this_app">
+        <h2>
+            <!-- <ion-icon class="zmdi zmdi-shopping-cart"></ion-icon> -->
+            {{"buy_this_app" | translate}}
+        </h2>
+    </div>
+</ion-header>
+
+
+<ion-content>
+    <ion-list lines="none">
+        <ion-item class="animate__animated animate__fadeInUp" (click)="thumb_impression()">
+            <div class="item_inner">
+                <h2 class="animate__animated animate__fadeInUp">{{'change_thumb_impression' | translate}}</h2>
+                <p class="animate__animated animate__fadeInUp">{{'change_login_mpin' | translate}}</p>
+            </div>
+        </ion-item>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="nearby_bank()">
+            <div class="item_inner">
+                <h2 class="animate__animated animate__fadeInUp">{{'nearby_bank_atm' | translate}}</h2>
+                <p class="animate__animated animate__fadeInUp">{{'found_nearest' | translate}}</p>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="change_language()">
+            <div class="item_inner">
+                <h2 class="animate__animated animate__fadeInUp">{{'change_language' | translate}}</h2>
+                <p class="animate__animated animate__fadeInUp">{{'select_language' | translate}}</p>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="terms_conditions()">
+            <div class="item_inner">
+                <h2 class="animate__animated animate__fadeInUp">{{'terms_conditions' | translate}}</h2>
+                <p class="animate__animated animate__fadeInUp">{{'bank_app_conditions' | translate}}</p>
+            </div>
+        </ion-item>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="faqs()">
+            <div class="item_inner">
+                <h2 class="animate__animated animate__fadeInUp">{{'faqs' | translate}}</h2>
+                <p class="animate__animated animate__fadeInUp">{{'faqs_text' | translate}}</p>
+            </div>
+        </ion-item>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="support()">
+            <div class="item_inner">
+                <h2 class="animate__animated animate__fadeInUp">{{'24_support' | translate}}</h2>
+                <p class="animate__animated animate__fadeInUp">{{'24_support_text' | translate}}</p>
+            </div>
+        </ion-item>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="sing_in()">
+            <div class="item_inner">
+                <h2 class="animate__animated animate__fadeInUp">{{'logout' | translate}}</h2>
+                <p class="animate__animated animate__fadeInUp">{{'logout_from_app' | translate}}</p>
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer class="ion-no-border animate__animated animate__fadeInUp" *ngIf="config.demoMode">
+    <div class="developed_by d-flex" (click)="developed_by()">
+        <h2>{{"developed_by" | translate}}</h2>
+        <div class="img_box ion-text-end end">
+            <img src="assets/imgs/opus.png" class="light-theme-logo">
+        </div>
+    </div>
+</ion-footer>

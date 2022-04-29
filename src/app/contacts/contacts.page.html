@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{'contacts' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen class="bg_color">
+  <ion-searchbar placeholder="Rechercher..." mode="ios" [(ngModel)]="searchTerm" animated="true"></ion-searchbar>
+  <ion-list lines="none">
+		<h2>{{'contacts' | translate}}</h2>
+		<ion-item *ngFor="let contact of contacts | filter:searchTerm" (click)="details(contact)" class="animate__animated animate__fadeInUp deposited">
+			<div class="item_inner">
+				<ion-row >
+					<ion-col size="6">
+						<h4>{{'name' | translate}}</h4>
+						<h3 class="animate__animated animate__fadeInUp">{{contact.name}}</h3>
+					</ion-col>
+					<ion-col size="6">
+						<h4>{{'phone' | translate}}<sub></sub></h4>
+						<h3 class="animate__animated animate__fadeInUp">{{contact.phone}}</h3>
+					</ion-col>
+				</ion-row>
+			</div>
+		</ion-item>
+	</ion-list>
+</ion-content>

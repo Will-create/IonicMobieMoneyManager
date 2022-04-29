@@ -1,0 +1,90 @@
+{
+  "cordova-plugin-splashscreen": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-splashscreen@^5.0.2"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-statusbar": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-statusbar@^2.4.2"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-device": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-device@^2.0.2"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-ionic-webview": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-ionic-webview@^5.0.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-ionic-keyboard": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-ionic-keyboard@^2.0.5"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-sqlite-storage": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-sqlite-storage"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-sms-retriever-manager": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-sms-retriever-manager@^1.0.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "mx.ferreyra.callnumber": {
+    "source": {
+      "type": "registry",
+      "id": "call-number"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "ng.neiel.cordova.plugins.ussd": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-ussd"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-vibration": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-vibration"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-background-mode": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-background-mode"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}

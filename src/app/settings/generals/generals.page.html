@@ -1,0 +1,22 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+		<ion-title>{{'general_settings' | translate}}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="bg_color">
+	<form [formGroup]="generalForm" (ngSubmit)="save()" class="form">
+		<ion-list lines="none">
+			<h2 class="d-flex animate__animated animate__fadeInUp">{{'ussd_shortcode' | translate }}</h2>
+			<ion-item class="animate__animated animate__fadeInUp" lines="none">
+				<ion-input type="text" formControlName="shortcode" placeholder="{{'ussd_shortcode' | translate}}"></ion-input>
+			</ion-item>
+		</ion-list>
+	</form>
+	<ion-footer class="ion-no-border animate__animated animate__fadeInUp">
+		<ion-button size="small" shape="block" class="btn" (click)="save()">{{'save' | translate}}</ion-button>
+	</ion-footer>
+</ion-content>

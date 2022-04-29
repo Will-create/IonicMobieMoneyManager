@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{'verification' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="form">
+        <h2 class="ion-text-center">
+            <span class="animate__animated animate__fadeInUp">{{'enter_otp_send_on' | translate}}</span>
+            <br>
+            <span class="animate__animated animate__fadeInUp">+1 987 654 3210</span>
+        </h2>
+        <ion-list lines="none">
+            <ion-item class="animate__animated animate__fadeInUp" lines="none">
+                <ion-input type="text" placeholder="{{'enter_otp_code' | translate}}"></ion-input>
+            </ion-item>
+            <ion-button size="large" shape="block" class="btn animate__animated animate__fadeInUp" (click)="tabs()">{{'continue' | translate}}</ion-button>
+        </ion-list>
+    </div>
+    <div class="thumb_impression ion-text-center animate__animated animate__fadeInUp">
+        <h2>{{'verification_text' | translate}}<br>{{'verification_text_2' | translate}}</h2>
+    </div>
+</ion-content>

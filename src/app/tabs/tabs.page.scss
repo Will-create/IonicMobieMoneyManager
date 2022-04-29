@@ -1,0 +1,36 @@
+	ion-tab-bar {
+		--background: #df6706 !important;
+		--animate-duration: .4s!important;
+		ion-tab-button {
+			position: relative;
+			transition: all .4s;
+
+			ion-icon {
+				position: relative;
+				width: 30px;
+				height: 30px;
+				margin: 0 auto;
+				color: var(--white);
+			}
+
+			ion-label {
+				color: var(--white);
+				font-weight: 400;
+				letter-spacing: 0;
+				font-size: 0.55rem;
+				padding: 0;
+				margin: 0;
+
+			}
+
+			&.tab-selected {
+				ion-icon {
+					color: #4DD9FF;
+				}
+				ion-label{
+					color :#4DD9FF;
+					font-size: 12	px;
+				}
+			}
+		}
+	}

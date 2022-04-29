@@ -1,0 +1,26 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			<h2>
+				{{'server_settings' | translate }}
+			
+			</h2>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content fullscreen class="bg_color">
+	<form [formGroup]="serverForm" (ngSubmit)="save()" class="form">
+		<ion-list lines="none">
+			<h2 class="d-flex animate__animated animate__fadeInUp">{{'server_address' | translate }}</h2>
+			<ion-item class="animate__animated animate__fadeInUp" lines="none">
+				<ion-input type="text" formControlName="hostname" placeholder="{{'server_address' | translate}}"></ion-input>
+			</ion-item>
+		</ion-list>
+	</form>
+	<ion-footer class="ion-no-border animate__animated animate__fadeInUp">
+		<ion-button size="large" shape="block" class="btn" (click)="save()">{{'save' | translate}}</ion-button>
+	</ion-footer>
+</ion-content>

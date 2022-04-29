@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="ng.neiel.cordova.plugins.ussd"
+        version="0.7.0">
+
+    <name>Ussd</name>
+
+    <engines>
+        <engine name="cordova" version=">=3.4.0"/>
+    </engines>
+
+    <asset src="www/ussd.js" target="js/ussd.js"/>
+
+    <js-module src="www/ussd.js" name="ussd">
+        <clobbers target="ussd" />
+    </js-module>
+
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Ussd">
+                <param name="android-package" value="ng.neiel.cordova.plugins.Ussd"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.CALL_PHONE" />
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+        </config-file>
+
+        <source-file src="src/android/Ussd.java" target-dir="src/ng/neiel/cordova/plugins"/>
+    </platform>
+
+<!--    <platform name="ios">-->
+
+<!--        <config-file target="config.xml" parent="/widget">-->
+<!--            <feature name="Hello">-->
+<!--                <param name="ios-package" value="HWPHello" />-->
+<!--            </feature>-->
+<!--        </config-file>-->
+
+<!--        <header-file src="src/ios/HWPHello.h" target-dir="HelloPlugin"/>-->
+<!--        <source-file src="src/ios/HWPHello.m" target-dir="HelloPlugin"/>-->
+<!--    </platform>-->
+
+
+
+</plugin>

@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title></ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="banner">
+        <h2 class="ion-text-center animate__animated animate__zoomIn">
+            {{'app_title' | translate}}
+            <span>{{'app_title_2' | translate}}</span>
+        </h2>
+    </div>
+
+    <div class="form">
+        <h2 class="ion-text-center animate__animated animate__fadeInUp">{{'register_with_your_banking_details' | translate}}</h2>
+        <ion-list lines="none">
+            <ion-item class="animate__animated animate__fadeInUp" lines="none">
+                <ion-input type="email" placeholder="{{'email_your_customer_id' | translate}}"></ion-input>
+            </ion-item>
+            <ion-item class="animate__animated animate__fadeInUp" lines="none">
+                <ion-input type="number" placeholder="{{'enter_account_number' | translate}}"></ion-input>
+            </ion-item>
+            <ion-item class="animate__animated animate__fadeInUp" lines="none">
+                <ion-input type="text" placeholder="{{'enter_mpin' | translate}}"></ion-input>
+            </ion-item>
+
+            <ion-button size="large" shape="block" class="btn animate__animated animate__fadeInUp" (click)="verification()">{{'continue' | translate}}</ion-button>
+        </ion-list>
+
+    </div>
+
+    <div class="thumb_impression ion-text-center ">
+        <h2>
+            <span class="animate__animated animate__fadeInUp">{{'sign_up_text' | translate}}</span>
+            <br>
+            <span class="animate__animated animate__fadeInUp"> {{'phone_number' | translate}}</span>
+        </h2>
+    </div>
+</ion-content>

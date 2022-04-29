@@ -1,0 +1,21 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+		<ion-title>{{'zones' | translate}} ({{zones_count}})</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>   
+	<ion-searchbar placeholder="Rechercher..." mode="ios" [(ngModel)]="searchTerm" animated="true"></ion-searchbar>
+    
+    <ion-list lines="none">
+        <ion-item class="animate__animated animate__fadeInUp debited" *ngFor="let zone of zones | filter:searchTerm" (click)="details(zone)">
+            <div class="item_inner">
+                <h3>{{zone.name}}</h3>
+                <h4 class="d-flex">{{zone.countries == 'bf' ? 'Burkina Faso' : 'Cote d\'Ivoire'}}<span class="end">{{zone.localitecount}}</span></h4>
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>
