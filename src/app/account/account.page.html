@@ -3,15 +3,15 @@
         <ion-buttons slot="start">
             <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
         </ion-buttons>
-        <ion-title>{{'account' | translate}}</ion-title>
+        <ion-title>Compte</ion-title>
     </ion-toolbar>
     <div class="banner d-flex" (click)="profile()">
         <div class="img_box center_img">
-            <img src="assets/imgs/profile.png" class="crop_img">
+            <img src="{{userprofile.picture}}" class="crop_img">
         </div>
         <div class="text">
-            <h2 class="animate__animated animate__fadeInUp">Sam Smith</h2>
-            <h3 class="animate__animated animate__fadeInUp">{{'view_profile' | translate}}</h3>
+            <h2 class="animate__animated animate__fadeInUp">{{ userprofile.name}}</h2>
+            <h3 class="animate__animated animate__fadeInUp">Voir le profile</h3>
         </div>
     </div>
 
@@ -22,52 +22,36 @@
         </h2>
     </div>
 </ion-header>
-
-
 <ion-content>
     <ion-list lines="none">
-        <ion-item class="animate__animated animate__fadeInUp" (click)="thumb_impression()">
-            <div class="item_inner">
-                <h2 class="animate__animated animate__fadeInUp">{{'change_thumb_impression' | translate}}</h2>
-                <p class="animate__animated animate__fadeInUp">{{'change_login_mpin' | translate}}</p>
-            </div>
-        </ion-item>
-        <ion-item class="animate__animated animate__fadeInUp" (click)="nearby_bank()">
-            <div class="item_inner">
-                <h2 class="animate__animated animate__fadeInUp">{{'nearby_bank_atm' | translate}}</h2>
-                <p class="animate__animated animate__fadeInUp">{{'found_nearest' | translate}}</p>
-            </div>
-        </ion-item>
-
         <ion-item class="animate__animated animate__fadeInUp" (click)="change_language()">
             <div class="item_inner">
-                <h2 class="animate__animated animate__fadeInUp">{{'change_language' | translate}}</h2>
-                <p class="animate__animated animate__fadeInUp">{{'select_language' | translate}}</p>
+                <h2 class="animate__animated animate__fadeInUp">Changer la langue</h2>
+                <p class="animate__animated animate__fadeInUp">Selectionner votre langue</p>
             </div>
         </ion-item>
 
         <ion-item class="animate__animated animate__fadeInUp" (click)="terms_conditions()">
             <div class="item_inner">
-                <h2 class="animate__animated animate__fadeInUp">{{'terms_conditions' | translate}}</h2>
-                <p class="animate__animated animate__fadeInUp">{{'bank_app_conditions' | translate}}</p>
+                <h2 class="animate__animated animate__fadeInUp">Termes et Conditions</h2>
+                <p class="animate__animated animate__fadeInUp">Conditions generales d'utilisation de l'application</p>
             </div>
         </ion-item>
         <ion-item class="animate__animated animate__fadeInUp" (click)="faqs()">
             <div class="item_inner">
-                <h2 class="animate__animated animate__fadeInUp">{{'faqs' | translate}}</h2>
-                <p class="animate__animated animate__fadeInUp">{{'faqs_text' | translate}}</p>
+                <h2 class="animate__animated animate__fadeInUp">FAQs</h2>
+                <p class="animate__animated animate__fadeInUp">Questions frequenment posees</p>
             </div>
         </ion-item>
         <ion-item class="animate__animated animate__fadeInUp" (click)="support()">
             <div class="item_inner">
-                <h2 class="animate__animated animate__fadeInUp">{{'24_support' | translate}}</h2>
-                <p class="animate__animated animate__fadeInUp">{{'24_support_text' | translate}}</p>
+                <h2 class="animate__animated animate__fadeInUp">Aide et Support</h2>
+                <p class="animate__animated animate__fadeInUp">Disponible 24/7j</p>
             </div>
         </ion-item>
         <ion-item class="animate__animated animate__fadeInUp" (click)="sing_in()">
             <div class="item_inner">
-                <h2 class="animate__animated animate__fadeInUp">{{'logout' | translate}}</h2>
-                <p class="animate__animated animate__fadeInUp">{{'logout_from_app' | translate}}</p>
+                <h2 class="animate__animated animate__fadeInUp">Deconnexion</h2>
             </div>
         </ion-item>
     </ion-list>

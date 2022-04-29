@@ -23,17 +23,15 @@ export class ShortformsPage implements OnInit {
   constructor( private formBuilder : FormBuilder, private toastCtrl : ToastController,private router : Router,private http: HttpClient) { 
     // load base url
     this.baseUrl = Helper.getApiHostname();
-
+    this.shortCode = Helper.getUssdShortcode();
     if(this.router.getCurrentNavigation().extras.state){
       this.agent = this.router.getCurrentNavigation().extras.state.number;
-      console.log(this.agent);
     };
     this.http.get(this.baseUrl+'api/mobile/distributors/list/', this.httpOptions).subscribe(list=>{
       if(list['count'] > 0){
         this.distributors = list['items'];
       }
     });
-    this.shortCode = '*144*4*1*1*';
     this.depositForm =  this.formBuilder.group({
       distributor_number : '',
       agent_number : this.agent.number,
@@ -48,10 +46,34 @@ export class ShortformsPage implements OnInit {
   let dist = this.depositForm.get('distributor_number').value;
   let agent_number = this.depositForm.get('agent_number').value;
   let amount = this.depositForm.get('amount').value;
-  let code = this.shortCode+agent_number+"*"+amount+"#";
+  let passcode = this.depositForm.get('passcode').value;
+  if(!dist){
+    this.presentToast("Numero distributeur est obligatoire", 'bottom', 600);
+    return;
+  }
+
+  if(!agent_number){
+    this.presentToast("Numero Agent est obligatoire", 'bottom', 600);
+    return;
+  }
+
+  if(!amount){
+    this.presentToast("Le Montant est obligatoire", 'bottom', 600);
+    return;
+  }
+  if(!passcode){
+    this.presentToast("Le Mot de passe est obligatoire est obligatoire", 'bottom', 600);
+    return;
+  }
+  let code = this.shortCode+agent_number+"*"+amount+"*"+passcode+"#";
+  console.log(code);
   CallNumber.callNumber(code, false)
-  .then(res => this.next(res))
-  .catch(err => this.next(err));
+  .then(res =>{ 
+    this.presentToast(res, 'bottom', 600);
+  })
+  .catch(err => {
+    this.presentToast(err, 'bottom', 600);
+  });
   }
   err(err){
 
@@ -62,9 +84,17 @@ export class ShortformsPage implements OnInit {
       state : {
         dist : this.depositForm.get('distributor_number').value,
         agent_number : this.depositForm.get('agent_number').value,
-        amount : this.depositForm.get('amount').value
+        amount : this.depositForm.get('amount').value,
       }
     }
     this.router.navigate(['deposits/pending'],extras);
+  }
+  async presentToast(message : string, position : "top" | "middle" | "bottom", duration : number) {
+    const toast = await this.toastCtrl.create({
+      message: message,
+      position: position,
+      duration: duration
+    });
+    toast.present();
   }
 }

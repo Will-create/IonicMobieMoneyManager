@@ -7,6 +7,9 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "com.verbosetech.opusbanking"
+    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
@@ -25,6 +28,9 @@
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "com.verbosetech.opusbanking"
+    },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
@@ -32,12 +38,6 @@
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
     "ng.neiel.cordova.plugins.ussd": {
-      "PACKAGE_NAME": "com.verbosetech.opusbanking"
-    },
-    "cordova-plugin-vibration": {
-      "PACKAGE_NAME": "com.verbosetech.opusbanking"
-    },
-    "cordova-plugin-background-mode": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     }
   },

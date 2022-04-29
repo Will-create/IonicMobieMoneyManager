@@ -61,17 +61,18 @@ ion-list {
 				h5 {
 					font-size: 1rem;
 					font-weight: 600;
-					margin: 0;
+					
+				.envoyer {
+						background-color: var(--primary)!important;
+					}
+			
+				.recevoir {
+						background-color: var(--secondary)!important;
+					}
 				}
 			}
 		}
 
-		&.panding ion-row ion-col h5 {
-			color: var(--secondary);
-		}
 
-		&.deposited ion-row ion-col h5 {
-			color: var(--secondary);
-		}
 	}
 }

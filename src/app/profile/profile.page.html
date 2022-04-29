@@ -3,42 +3,39 @@
         <ion-buttons slot="start">
             <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
         </ion-buttons>
-        <ion-title>{{'profile' | translate}}</ion-title>
+        <ion-title>Profile</ion-title>
     </ion-toolbar>
 </ion-header>
-
-
-<ion-content fullscreen>
+<ion-content fullscreen class="bg_color">
     <div class="bg"></div>
     <div class="profile_img_box animate__animated animate__zoomIn">
         <div class="profile_img center_img">
-            <img src="assets/imgs/profile.png" class="crop_img">
+            <img src="{{profile.picture}}" class="crop_img">
         </div>
         <ion-icon class="zmdi zmdi-camera"></ion-icon>
     </div>
-    <div class="form">
+    <form class="form" [formGroup]="profileForm">
         <ion-list lines="none">
             <ion-item class="animate__animated animate__fadeInUp" lines="none">
-                <ion-label position="floating">{{'full_name' | translate}}</ion-label>
-                <ion-input type="text" value="Sam Smith"></ion-input>
+                <ion-label position="floating">Nom Complet</ion-label>
+                <ion-input type="text" formControlName="name" ></ion-input>
             </ion-item>
             <ion-item class="animate__animated animate__fadeInUp" lines="none">
-                <ion-label position="floating">{{'email_address' | translate}}</ion-label>
-                <ion-input type="text" value="samsmith@mail.com"></ion-input>
+                <ion-label position="floating">Numero de telephone</ion-label>
+                <ion-input type="text"  formControlName="phone"></ion-input>
             </ion-item>
             <ion-item class="animate__animated animate__fadeInUp" lines="none">
-                <ion-label position="floating">{{'account_number' | translate}}</ion-label>
-                <ion-input type="text" value="+1 987 654 3210"></ion-input>
+                <ion-label position="floating">Numero de connexion</ion-label>
+                <ion-input type="text" formControlName="login" ></ion-input>
             </ion-item>
             <ion-item class="animate__animated animate__fadeInUp" lines="none">
-                <ion-label position="floating">{{'customer_id' | translate}}</ion-label>
-                <ion-input type="text" value="HDXC114124"></ion-input>
+                <ion-label position="floating">Mot de passe</ion-label>
+                <ion-input type="text" formControlName="password"  ></ion-input>
             </ion-item>
-        
         </ion-list>
-    </div>
+    </form>
+   
+    <ion-footer class="ion-no-border animate__animated animate__fadeInUp">
+        <ion-button size="large" shape="full" (click)="save()" class="btn">Sauvegarder</ion-button>
+    </ion-footer>
 </ion-content>
-
-<ion-footer class="ion-no-border animate__animated animate__fadeInUp">
-    <ion-button size="large" shape="full" class="btn">{{'update_profile' | translate}}</ion-button>
-</ion-footer>

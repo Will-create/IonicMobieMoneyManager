@@ -1,9 +1,7 @@
 <ion-header>
     <ion-toolbar>
         <ion-title>
-            <span class="d-flex" (click)="sign_up()">
-                <span class="end"> {{'new_user' | translate}}</span>
-            </span>
+           
         </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -11,21 +9,19 @@
 <ion-content fullscreen class="bg_color">
     <div class="banner">
         <h2 class="ion-text-center animate__animated animate__zoomIn">
-            {{'app_title' | translate}}
-            <span>{{'app_title_2' | translate}}</span>
+                 
+            <span>OM MANAGER</span> <br>
         </h2>
     </div>
-
     <div class="form">
-        <h2 class="ion-text-center animate__animated animate__fadeInUp">{{'or_sign_in_with_customer_id' | translate}}</h2>
         <ion-list lines="none">
             <ion-item class="animate__animated animate__fadeInUp" lines="none">
-                <ion-input type="email" placeholder="{{'email_customer_id' | translate}}"></ion-input>
+                <ion-input type="email" placeholder="Email"></ion-input>
             </ion-item>
             <ion-item class="animate__animated animate__fadeInUp" lines="none">
-                <ion-input type="text" placeholder="{{'enter_mpin' | translate}}"></ion-input>
+                <ion-input type="text" placeholder="Mot de passe"></ion-input>
             </ion-item>
-            <ion-button size="large" shape="block animate__animated animate__fadeInUp" class="btn" (click)="tabs()">{{'sign_in' | translate}}</ion-button>
+            <ion-button size="large" shape="block animate__animated animate__fadeInUp" class="btn" (click)="tabs()">Connexion</ion-button>
         </ion-list>
     </div>
 </ion-content>

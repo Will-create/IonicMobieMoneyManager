@@ -5,8 +5,8 @@
 		</ion-buttons>
 		<ion-title>
 			<h2>
-				{{'send' | translate}}
-				<small>{{'send_liquidity' | translate}}</small>
+				Depot vers agent
+				<small>Envoyer du virtuel</small>
 			</h2>
 		</ion-title>
 	</ion-toolbar>
@@ -14,30 +14,26 @@
 <ion-content fullscreen>
   <form class="form" [formGroup]="depositForm" (ngSubmit)="send()">
 		<ion-list lines="none">
-			<h2 class="animate__animated animate__fadeInUp">{{'send_from' | translate}}</h2>
 			<ion-item class="animate__animated animate__fadeInUp" lines="none">
 				<ion-select mode="md" formControlName="distributor_number" interface="action-sheet">
-						<ion-select-option disabled value="">{{'distributor_number' | translate }}</ion-select-option>
+						<ion-select-option disabled value="">Numero distributeur</ion-select-option>
 					<ion-select-option *ngFor="let distributor of distributors" value="{{distributor.number}}">
            {{distributor.number}} ({{distributor.balance}} XOF)
           </ion-select-option>
 				</ion-select>
 			</ion-item>
-			<h2 class="d-flex animate__animated animate__fadeInUp">{{'send_to' | translate}}</h2>
 			<ion-item class="animate__animated animate__fadeInUp" lines="none">
-				<ion-input type="text" formControlName="agent_number" placeholder="{{'agent_number' | translate}}"></ion-input>
+				<ion-input type="text" formControlName="agent_number" placeholder="Numero Agent"></ion-input>
 			</ion-item>
-			<h2 class="d-flex animate__animated animate__fadeInUp">{{'enter_amount' | translate}} <span class="end">EX 30000</span></h2>
 			<ion-item class="animate__animated animate__fadeInUp" lines="none">
-				<ion-input type="number" formControlName="amount" placeholder="0.00"></ion-input>
+				<ion-input type="number" formControlName="amount" placeholder="Montant"></ion-input>
 			</ion-item>
-			<h2 class="d-flex animate__animated animate__fadeInUp">{{'passcode' | translate}} <span class="end">EX 30000</span></h2>
 			<ion-item class="animate__animated animate__fadeInUp" lines="none">
-				<ion-input type="number" formControlName="passcode"></ion-input>
+				<ion-input type="text" formControlName="passcode"placeholder="Mot de passe" ></ion-input>
 			</ion-item>
 		</ion-list>
 	</form><ion-footer class="ion-no-border animate__animated animate__fadeInUp">
-		<ion-button size="small" (click)="send()" shape="block" class="btn" >{{'send' | translate}}</ion-button>
+		<ion-button size="small" (click)="send()" shape="block" class="btn" >Envoyer</ion-button>
 	  </ion-footer>
 </ion-content>
 

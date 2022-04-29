@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { APP_CONFIG, AppConfig } from '../app.config'; 
 import { BuyappalertPage } from '../buyappalert/buyappalert.page';
 import { ModalController } from '@ionic/angular';
+import { Helper } from 'src/models/helper.models';
 
 @Component({
   selector: 'app-account',
@@ -11,9 +12,11 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./account.page.scss'],
 })
 export class AccountPage implements OnInit {
-
+ public userprofile;
   constructor(@Inject(APP_CONFIG) public config: AppConfig, private navCtrl: NavController, private route: Router,
-    private modalController: ModalController) { }
+    private modalController: ModalController) { 
+      this.userprofile = JSON.parse(Helper.getUserProfile());
+    }
 
   ngOnInit() {
   }

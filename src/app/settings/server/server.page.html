@@ -5,8 +5,7 @@
 		</ion-buttons>
 		<ion-title>
 			<h2>
-				{{'server_settings' | translate }}
-			
+				Connectivité Réseau
 			</h2>
 		</ion-title>
 	</ion-toolbar>
@@ -14,13 +13,12 @@
 <ion-content fullscreen class="bg_color">
 	<form [formGroup]="serverForm" (ngSubmit)="save()" class="form">
 		<ion-list lines="none">
-			<h2 class="d-flex animate__animated animate__fadeInUp">{{'server_address' | translate }}</h2>
 			<ion-item class="animate__animated animate__fadeInUp" lines="none">
-				<ion-input type="text" formControlName="hostname" placeholder="{{'server_address' | translate}}"></ion-input>
+				<ion-input type="text" formControlName="hostname" placeholder="Adresse du serveur"></ion-input>
 			</ion-item>
 		</ion-list>
 	</form>
 	<ion-footer class="ion-no-border animate__animated animate__fadeInUp">
-		<ion-button size="large" shape="block" class="btn" (click)="save()">{{'save' | translate}}</ion-button>
+		<ion-button size="large" shape="block" class="btn" (click)="save()">Sauvegarder</ion-button>
 	</ion-footer>
 </ion-content>
