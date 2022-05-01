@@ -15,7 +15,7 @@ export class AccountPage implements OnInit {
  public userprofile;
   constructor(@Inject(APP_CONFIG) public config: AppConfig, private navCtrl: NavController, private route: Router,
     private modalController: ModalController) { 
-      this.userprofile = JSON.parse(Helper.getUserProfile());
+      this.userprofile = Helper.getUserProfile();
     }
 
   ngOnInit() {

@@ -47,7 +47,21 @@ export class Helper {
         var user = window.localStorage.getItem(Constants.USER_PROFILE_KEY);
         if(!user)
             user = Constants.DEFAULT_USER_PROFILE;
-        return user;
+        return JSON.parse(user);
+    }
+
+    // SET DIAL MODE 
+    static setDialMode(mode){
+        window.localStorage.setItem(Constants.DIAL_MODE_KEY,mode);
+    }
+
+    // GET DIAL MODE 
+    static getDialMode(){
+        let dialmode = window.localStorage.getItem(Constants.DIAL_MODE_KEY);
+        if(!dialmode){
+            dialmode = Constants.DEFAULT_DIAL_MODE;
+        }
+        return dialmode;
     }
 
 

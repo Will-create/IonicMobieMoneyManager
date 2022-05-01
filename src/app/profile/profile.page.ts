@@ -12,7 +12,7 @@ export class ProfilePage implements OnInit {
   public profileForm;
   public profile;
   constructor(private formBuilder : FormBuilder, private router : Router, private toastCtrl : ToastController){    
-    this.profile = JSON.parse(Helper.getUserProfile());
+    this.profile = Helper.getUserProfile();
     console.log(this.profile);
     this.profileForm = this.formBuilder.group(this.profile);
   }

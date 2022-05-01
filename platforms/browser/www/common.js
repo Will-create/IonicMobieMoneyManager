@@ -281,6 +281,81 @@ DetailsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
 
 /***/ }),
 
+/***/ 71220:
+/*!*************************************!*\
+  !*** ./src/models/helper.models.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "USER": () => (/* binding */ USER),
+/* harmony export */   "Helper": () => (/* binding */ Helper)
+/* harmony export */ });
+/* harmony import */ var _contants_models__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./contants.models */ 64879);
+
+class USER {
+}
+class Helper {
+    static seThemeMode(status) {
+        window.localStorage.setItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.KEY_DARK_MODE, status);
+    }
+    static getThemeMode(defaultTheme) {
+        let toReturn = window.localStorage.getItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.KEY_DARK_MODE);
+        if (!toReturn)
+            toReturn = defaultTheme;
+        return toReturn;
+    }
+    // SET API BASE URL OR HOSTNAME
+    static setApiHostname(hostname) {
+        window.localStorage.setItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.API_HOSTNAME_KEY, hostname);
+    }
+    // GET API BASE URL OR HOSTNAME
+    static getApiHostname() {
+        var hostname = window.localStorage.getItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.API_HOSTNAME_KEY);
+        if (!hostname)
+            hostname = _contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.DEFAULT_API_HOSTNAME;
+        return hostname;
+    }
+    // Set USSD USSD SHORT CODE
+    static setUssdShortcode(shortcode) {
+        window.localStorage.setItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.USSD_SHORTCODE_KEY, shortcode);
+    }
+    // GET USSD SHORT CODE
+    static getUssdShortcode() {
+        var shortcode = window.localStorage.getItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.USSD_SHORTCODE_KEY);
+        if (!shortcode)
+            shortcode = _contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.DEFAULT_USSD_SHORTCODE;
+        return shortcode;
+    }
+    // Set USSD USSD SHORT CODE
+    static setUserProfile(user) {
+        window.localStorage.setItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.USER_PROFILE_KEY, user);
+    }
+    // GET USSD SHORT CODE
+    static getUserProfile() {
+        var user = window.localStorage.getItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.USER_PROFILE_KEY);
+        if (!user)
+            user = _contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.DEFAULT_USER_PROFILE;
+        return user;
+    }
+    // SET DIAL MODE 
+    static setDialMode(mode) {
+        window.localStorage.setItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.DIAL_MODE_KEY, mode);
+    }
+    // GET DIAL MODE 
+    static getDialMode() {
+        let dialmode = window.localStorage.getItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.DIAL_MODE_KEY);
+        if (!dialmode) {
+            dialmode = _contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.DEFAULT_DIAL_MODE;
+        }
+        return dialmode;
+    }
+}
+
+
+/***/ }),
+
 /***/ 75800:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/button-active-eaaa6ece.js ***!

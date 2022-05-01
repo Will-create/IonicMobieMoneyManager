@@ -7,8 +7,6 @@ import { SplashScreen } from '@awesome-cordova-plugins/splash-screen/ngx';
 import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { Constants } from '../models/contants.models';
 import { MyEvent } from 'src/services/myevent.services';
-
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -38,16 +36,18 @@ export class AppComponent {
       this.navCtrl.navigateRoot(['./']);
     }
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-
+      this.statusBar.overlaysWebView(true);
+      this.statusBar.styleBlackTranslucent();
+      setTimeout(() => {
+        this.splashScreen.hide();
+      }, 7000);
       let defaultLang = window.localStorage.getItem(Constants.KEY_DEFAULT_LANGUAGE);
       this.globalize(defaultLang);
     });
   }
 
   globalize(languagePriority) {
-    this.translate.setDefaultLang("en");
+    this.translate.setDefaultLang("fr");
     let defaultLangCode = this.config.availableLanguages[0].code;
     this.translate.use(languagePriority && languagePriority.length ? languagePriority : defaultLangCode);
     this.setDirectionAccordingly(languagePriority && languagePriority.length ? languagePriority : defaultLangCode);

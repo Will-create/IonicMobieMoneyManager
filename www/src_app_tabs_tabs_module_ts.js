@@ -29,7 +29,7 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_home_home_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../home/home.module */ 3467)).then(m => m.HomePageModule)
+                        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_home_home_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../home/home.module */ 3467)).then(m => m.HomePageModule)
                     }
                 ]
             },
@@ -47,7 +47,7 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_account_account_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../account/account.module */ 63879)).then(m => m.AccountPageModule)
+                        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_account_account_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../account/account.module */ 63879)).then(m => m.AccountPageModule)
                     }
                 ]
             },
@@ -190,7 +190,7 @@ module.exports = "ion-tab-bar {\n  --background: #df6706 !important;\n  --animat
   \************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-tabs>\n\n\t<ion-tab-bar class=\"animate__animated animate__fadeInUp\" slot=\"bottom\">\n\t\t<ion-tab-button tab=\"home\">\n\t\t\t<ion-icon name=\"home-outline\"></ion-icon>\n\t\t\t<ion-label>{{'home' | translate}}</ion-label>\n\t\t</ion-tab-button>\n\t\t<ion-tab-button tab=\"transactions\">\n\t\t\t<ion-icon name=\"swap-vertical-outline\"></ion-icon>\n\t\t\t<ion-label>{{'transactions' | translate}}</ion-label>\n\t\t</ion-tab-button>\n\t\t<ion-tab-button tab=\"account\">\n\t\t\t<ion-icon name=\"person-outline\"></ion-icon>\n\t\t\t<ion-label>{{'account' | translate}}</ion-label>\n\t\t</ion-tab-button>\n\t\t<ion-tab-button tab=\"settings\">\n\t\t\t\t<ion-icon name=\"cog-outline\"></ion-icon>\n\t\t\t\t<ion-label>{{'settings' | translate}}</ion-label>\n\t\t</ion-tab-button>\n\t\t\n\t</ion-tab-bar>\n\n</ion-tabs>";
+module.exports = "<ion-tabs>\n\t<ion-tab-bar class=\"animate__animated animate__fadeInUp\" slot=\"bottom\">\n\t\t<ion-tab-button tab=\"home\">\n\t\t\t<ion-icon name=\"home-outline\"></ion-icon>\n\t\t\t<ion-label>Accueil</ion-label>\n\t\t</ion-tab-button>\n\t\t<ion-tab-button tab=\"transactions\">\n\t\t\t<ion-icon name=\"swap-vertical-outline\"></ion-icon>\n\t\t\t<ion-label>Transferts</ion-label>\n\t\t</ion-tab-button>\n\t\t<ion-tab-button tab=\"settings\">\n\t\t\t\t<ion-icon name=\"cog-outline\"></ion-icon>\n\t\t\t\t<ion-label>Parametres</ion-label>\n\t\t</ion-tab-button>\n\t</ion-tab-bar>\n</ion-tabs>";
 
 /***/ })
 

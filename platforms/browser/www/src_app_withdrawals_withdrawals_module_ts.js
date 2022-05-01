@@ -26,7 +26,7 @@ const routes = [
     },
     {
         path: 'shortforms',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_models_helper_models_ts-node_modules_ionic-native_call-number_index_js"), __webpack_require__.e("src_app_withdrawals_shortforms_shortforms_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./shortforms/shortforms.module */ 32772)).then(m => m.ShortformsPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_withdrawals_shortforms_shortforms_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./shortforms/shortforms.module */ 32772)).then(m => m.ShortformsPageModule)
     },
     {
         path: 'longforms',

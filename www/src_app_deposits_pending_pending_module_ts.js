@@ -73,6 +73,7 @@ PendingPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
             _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule,
             _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule,
             _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__.TranslateModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_5__.ReactiveFormsModule,
             _pending_routing_module__WEBPACK_IMPORTED_MODULE_0__.PendingPageRoutingModule
         ],
         declarations: [_pending_page__WEBPACK_IMPORTED_MODULE_1__.PendingPage]
@@ -96,8 +97,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _pending_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pending.page.html?ngResource */ 66929);
 /* harmony import */ var _pending_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pending.page.scss?ngResource */ 29895);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 3184);
 /* harmony import */ var _awesome_cordova_plugins_sms_retriever__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @awesome-cordova-plugins/sms-retriever */ 78632);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 90587);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 93819);
 
 
@@ -105,9 +107,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 let PendingPage = class PendingPage {
-    constructor(toastCtrl) {
+    constructor(toastCtrl, builder) {
         this.toastCtrl = toastCtrl;
+        this.builder = builder;
+        this.finalForm = this.builder.group({
+            sms: ''
+        });
         _awesome_cordova_plugins_sms_retriever__WEBPACK_IMPORTED_MODULE_2__.SmsRetriever.getAppHash()
             .then((res) => console.log(res))
             .catch((error) => console.error(error));
@@ -136,6 +143,8 @@ let PendingPage = class PendingPage {
             this.presentToast('Transaction successfull', 'bottom', 600);
         }
     }
+    send() {
+    }
     presentToast(message, position, duration) {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(this, void 0, void 0, function* () {
             const toast = yield this.toastCtrl.create({
@@ -148,10 +157,11 @@ let PendingPage = class PendingPage {
     }
 };
 PendingPage.ctorParameters = () => [
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ToastController }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ToastController },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormBuilder }
 ];
 PendingPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
         selector: 'app-pending',
         template: _pending_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_pending_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -225,7 +235,7 @@ module.exports = "ion-header ion-toolbar ion-title {\n  text-align: center;\n  d
   \***************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n      <ion-title>{{'pending' | translate}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content class=\"bg_color\" fullscreen>\n  <ion-list lines=\"none\">\n      <div class=\"list_header ion-text-center animate__animated animate__fadeInUp\">\n          <ion-icon class=\"zmdi zmdi-check-all animate__animated animate__zoomIn\"></ion-icon>\n          <h1>{{'pending' | translate}} !!</h1>\n      </div>\n      <ion-item class=\"animate__animated animate__fadeInUp\">\n          <div class=\"item_inner\">\n              <ion-textarea ></ion-textarea>\n          </div>\n      </ion-item>\n     \n      \n      \n      <p class=\"animate__animated animate__fadeInUp\">{{'sent_on' | translate}} 15 June, 2019 11:49 am</p>\n  </ion-list>\n</ion-content>\n\n\n<ion-footer class=\"ion-no-border animate__animated animate__fadeInUp\">\n  <ion-row>\n      <ion-col size=\"6\">\n          <ion-button size=\"large\" shape=\"block\" class=\"btn\" (click)=\"tabs()\">{{'cancel' | translate}}</ion-button>\n      </ion-col>\n  </ion-row>\n</ion-footer>";
+module.exports = "<ion-header>\n  <ion-toolbar>\n      <ion-title>{{'pending' | translate}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content class=\"bg_color\" fullscreen>\n  <ion-list lines=\"none\">\n      <div class=\"list_header ion-text-center animate__animated animate__fadeInUp\">\n          <ion-icon class=\"zmdi zmdi-spinner animate__animated animate__zoomIn\"></ion-icon>\n          <h1>En attente du message</h1>\n      </div>\n      <form class=\"form\" [formGroup]=\"finalForm\" (ngSubmit)=\"send()\">\n\t\t<ion-list lines=\"none\">\n\t\t\t\n\t\t\t<ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n\t\t\t\t<ion-textarea rows=\"5\" formControlName=\"sms\" placeholder=\"Coller le sms de transfert que vous avez recu ici\"></ion-textarea>\n\t\t\t</ion-item>\n\t\t</ion-list>\n\t</form>\n\t<ion-footer class=\"ion-no-border animate__animated animate__fadeInUp\">\n\t\t<ion-button size=\"small\" (click)=\"send()\" shape=\"block\" class=\"btn\" >Envoyer</ion-button>\n\t  </ion-footer>\n\n     \n      \n      \n      <p class=\"animate__animated animate__fadeInUp\"></p>\n  </ion-list>\n</ion-content>\n\n\n<ion-footer class=\"ion-no-border animate__animated animate__fadeInUp\">\n  <ion-row>\n      <ion-col size=\"6\">\n          <ion-button size=\"large\" shape=\"block\" class=\"btn\" (click)=\"tabs()\">{{'cancel' | translate}}</ion-button>\n      </ion-col>\n  </ion-row>\n</ion-footer>";
 
 /***/ })
 

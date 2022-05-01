@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
@@ -22,9 +22,21 @@ export class DetailsPage implements OnInit {
 
   }
   deposit(number : any){
+    let extras : NavigationExtras = {
+      state : {
+        number : number
+        
+      }
+    };
+    this.router.navigate(['deposits/shortforms'],extras);
 
   }
-  withdraw(number : any ){
-    
+  withdraw(number : any){
+    let extras : NavigationExtras = {
+      state : {
+        number : number
+      }
+    };
+    this.router.navigate(['withdrawals/shortforms'],extras);
   }
 }

@@ -75,10 +75,10 @@
 
         <ion-row *ngFor="let number of numbers">
 					<ion-col size="6">
-            <ion-button size="small" shape="block animate__animated animate__fadeInUp" class="btn" (click)="deposit(number)">{{'deposit' | translate}}</ion-button>
+            <ion-button size="small" shape="block animate__animated animate__fadeInUp" class="btn" (click)="deposit(number)">Envoyer</ion-button>
 					</ion-col>
 					<ion-col size="6">
-            <ion-button size="small" shape="block animate__animated animate__fadeInUp" class="btn" (click)="withdraw(number)">{{'withdrawal' | translate}}</ion-button>
+            <ion-button size="small" shape="block animate__animated animate__fadeInUp" class="btn" (click)="withdraw(number)">Recevoir</ion-button>
 					</ion-col>
 				</ion-row>
 			</div>

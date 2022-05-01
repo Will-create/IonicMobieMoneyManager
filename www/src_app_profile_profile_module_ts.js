@@ -52,11 +52,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 3184);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 36362);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 90587);
-/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ngx-translate/core */ 87514);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
 /* harmony import */ var _profile_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./profile-routing.module */ 86829);
 /* harmony import */ var _profile_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./profile.page */ 72919);
-
 
 
 
@@ -72,7 +70,7 @@ ProfilePageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
             _angular_common__WEBPACK_IMPORTED_MODULE_4__.CommonModule,
             _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule,
             _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule,
-            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__.TranslateModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_5__.ReactiveFormsModule,
             _profile_routing_module__WEBPACK_IMPORTED_MODULE_0__.ProfilePageRoutingModule
         ],
         declarations: [_profile_page__WEBPACK_IMPORTED_MODULE_1__.ProfilePage]
@@ -93,22 +91,62 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ProfilePage": () => (/* binding */ ProfilePage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _profile_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./profile.page.html?ngResource */ 8907);
 /* harmony import */ var _profile_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./profile.page.scss?ngResource */ 36611);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 90587);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 52816);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/models/helper.models */ 71220);
+
+
+
+
 
 
 
 
 let ProfilePage = class ProfilePage {
-    constructor() { }
+    constructor(formBuilder, router, toastCtrl) {
+        this.formBuilder = formBuilder;
+        this.router = router;
+        this.toastCtrl = toastCtrl;
+        this.profile = JSON.parse(src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getUserProfile());
+        console.log(this.profile);
+        this.profileForm = this.formBuilder.group(this.profile);
+    }
     ngOnInit() {
     }
+    save() {
+        let form = {};
+        form['name'] = this.profileForm.get('name').value;
+        form['picture'] = this.profileForm.get('picture').value;
+        form['login'] = this.profileForm.get('login').value;
+        form['password'] = this.profileForm.get('password').value;
+        form['phone'] = this.profileForm.get('phone').value;
+        src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.setUserProfile(JSON.stringify(form));
+        this.presentToast("Enregistre avec succes", "bottom", 600);
+        this.router.navigate(['/tabs/settings']);
+    }
+    presentToast(message, position, duration) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(this, void 0, void 0, function* () {
+            const toast = yield this.toastCtrl.create({
+                message: message,
+                position: position,
+                duration: duration
+            });
+            toast.present();
+        });
+    }
 };
-ProfilePage.ctorParameters = () => [];
-ProfilePage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+ProfilePage.ctorParameters = () => [
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormBuilder },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.ToastController }
+];
+ProfilePage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
         selector: 'app-profile',
         template: _profile_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_profile_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -135,7 +173,7 @@ module.exports = ".bg {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100
   \******************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n    <ion-toolbar>\n        <ion-buttons slot=\"start\">\n            <ion-back-button text=\"\" icon=\"chevron-back-outline\"></ion-back-button>\n        </ion-buttons>\n        <ion-title>{{'profile' | translate}}</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n\n<ion-content fullscreen>\n    <div class=\"bg\"></div>\n    <div class=\"profile_img_box animate__animated animate__zoomIn\">\n        <div class=\"profile_img center_img\">\n            <img src=\"assets/imgs/profile.png\" class=\"crop_img\">\n        </div>\n        <ion-icon class=\"zmdi zmdi-camera\"></ion-icon>\n    </div>\n    <div class=\"form\">\n        <ion-list lines=\"none\">\n            <ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n                <ion-label position=\"floating\">{{'full_name' | translate}}</ion-label>\n                <ion-input type=\"text\" value=\"Sam Smith\"></ion-input>\n            </ion-item>\n            <ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n                <ion-label position=\"floating\">{{'email_address' | translate}}</ion-label>\n                <ion-input type=\"text\" value=\"samsmith@mail.com\"></ion-input>\n            </ion-item>\n            <ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n                <ion-label position=\"floating\">{{'account_number' | translate}}</ion-label>\n                <ion-input type=\"text\" value=\"+1 987 654 3210\"></ion-input>\n            </ion-item>\n            <ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n                <ion-label position=\"floating\">{{'customer_id' | translate}}</ion-label>\n                <ion-input type=\"text\" value=\"HDXC114124\"></ion-input>\n            </ion-item>\n        \n        </ion-list>\n    </div>\n</ion-content>\n\n<ion-footer class=\"ion-no-border animate__animated animate__fadeInUp\">\n    <ion-button size=\"large\" shape=\"full\" class=\"btn\">{{'update_profile' | translate}}</ion-button>\n</ion-footer>";
+module.exports = "<ion-header>\n    <ion-toolbar>\n        <ion-buttons slot=\"start\">\n            <ion-back-button text=\"\" icon=\"chevron-back-outline\"></ion-back-button>\n        </ion-buttons>\n        <ion-title>Profile</ion-title>\n    </ion-toolbar>\n</ion-header>\n<ion-content fullscreen class=\"bg_color\">\n    <div class=\"bg\"></div>\n    <div class=\"profile_img_box animate__animated animate__zoomIn\">\n        <div class=\"profile_img center_img\">\n            <img src=\"{{profile.picture}}\" class=\"crop_img\">\n        </div>\n        <ion-icon class=\"zmdi zmdi-camera\"></ion-icon>\n    </div>\n    <form class=\"form\" [formGroup]=\"profileForm\">\n        <ion-list lines=\"none\">\n            <ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n                <ion-label position=\"floating\">Nom Complet</ion-label>\n                <ion-input type=\"text\" formControlName=\"name\" ></ion-input>\n            </ion-item>\n            <ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n                <ion-label position=\"floating\">Numero de telephone</ion-label>\n                <ion-input type=\"text\"  formControlName=\"phone\"></ion-input>\n            </ion-item>\n            <ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n                <ion-label position=\"floating\">Numero de connexion</ion-label>\n                <ion-input type=\"text\" formControlName=\"login\" ></ion-input>\n            </ion-item>\n            <ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n                <ion-label position=\"floating\">Mot de passe</ion-label>\n                <ion-input type=\"text\" formControlName=\"password\"  ></ion-input>\n            </ion-item>\n        </ion-list>\n    </form>\n   \n    <ion-footer class=\"ion-no-border animate__animated animate__fadeInUp\">\n        <ion-button size=\"large\" shape=\"full\" (click)=\"save()\" class=\"btn\">Sauvegarder</ion-button>\n    </ion-footer>\n</ion-content>\n";
 
 /***/ })
 

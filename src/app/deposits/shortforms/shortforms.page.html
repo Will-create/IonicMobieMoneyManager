@@ -5,7 +5,7 @@
 		</ion-buttons>
 		<ion-title>
 			<h2>
-				Depot vers agent
+				Envoi vers {{ agent.number}}
 				<small>Envoyer du virtuel</small>
 			</h2>
 		</ion-title>
@@ -18,19 +18,14 @@
 				<ion-select mode="md" formControlName="distributor_number" interface="action-sheet">
 						<ion-select-option disabled value="">Numero distributeur</ion-select-option>
 					<ion-select-option *ngFor="let distributor of distributors" value="{{distributor.number}}">
-           {{distributor.number}} ({{distributor.balance}} XOF)
-          </ion-select-option>
+           {{distributor.number}} | Solde : {{distributor.balance}}XOF
+          	</ion-select-option>
 				</ion-select>
-			</ion-item>
-			<ion-item class="animate__animated animate__fadeInUp" lines="none">
-				<ion-input type="text" formControlName="agent_number" placeholder="Numero Agent"></ion-input>
 			</ion-item>
 			<ion-item class="animate__animated animate__fadeInUp" lines="none">
 				<ion-input type="number" formControlName="amount" placeholder="Montant"></ion-input>
 			</ion-item>
-			<ion-item class="animate__animated animate__fadeInUp" lines="none">
-				<ion-input type="text" formControlName="passcode"placeholder="Mot de passe" ></ion-input>
-			</ion-item>
+			
 		</ion-list>
 	</form><ion-footer class="ion-no-border animate__animated animate__fadeInUp">
 		<ion-button size="small" (click)="send()" shape="block" class="btn" >Envoyer</ion-button>

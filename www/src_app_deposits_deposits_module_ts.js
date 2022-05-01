@@ -26,7 +26,7 @@ const routes = [
     },
     {
         path: 'shortforms',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_models_helper_models_ts-node_modules_ionic-native_call-number_index_js"), __webpack_require__.e("src_app_deposits_shortforms_shortforms_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./shortforms/shortforms.module */ 66385)).then(m => m.ShortformsPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_deposits_shortforms_shortforms_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./shortforms/shortforms.module */ 66385)).then(m => m.ShortformsPageModule)
     },
     {
         path: 'longforms',
@@ -151,7 +151,7 @@ module.exports = "ion-header ion-toolbar ion-title {\n  padding: 0 15px !importa
   \********************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n      <ion-buttons slot=\"start\">\n          <ion-back-button text=\"\" icon=\"chevron-back-outline\"></ion-back-button>\n      </ion-buttons>\n      <ion-title>{{'deposits' | translate}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n\n<ion-content>\n\n</ion-content>\n";
+module.exports = "<ion-header>\n  <ion-toolbar>\n      <ion-buttons slot=\"start\">\n          <ion-back-button text=\"\" icon=\"chevron-back-outline\"></ion-back-button>\n      </ion-buttons>\n      <ion-title>  Transferts envoyés </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n<ion-content>\n\n</ion-content>\n";
 
 /***/ })
 

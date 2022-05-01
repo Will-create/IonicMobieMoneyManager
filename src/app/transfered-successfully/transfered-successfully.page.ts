@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -7,8 +8,12 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./transfered-successfully.page.scss'],
 })
 export class TransferedSuccessfullyPage implements OnInit {
-
-  constructor(private navCtrl: NavController, ) { }
+  public insertion;
+  constructor(private navCtrl: NavController, private router : Router ) {
+    if(this.router.getCurrentNavigation().extras.state){
+      this.insertion=this.router.getCurrentNavigation().extras.state;
+    }
+   }
 
   ngOnInit() {
   }

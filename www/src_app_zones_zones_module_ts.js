@@ -161,55 +161,6 @@ ZonesPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
 
 /***/ }),
 
-/***/ 71220:
-/*!*************************************!*\
-  !*** ./src/models/helper.models.ts ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Helper": () => (/* binding */ Helper)
-/* harmony export */ });
-/* harmony import */ var _contants_models__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./contants.models */ 64879);
-
-class Helper {
-    static seThemeMode(status) {
-        window.localStorage.setItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.KEY_DARK_MODE, status);
-    }
-    static getThemeMode(defaultTheme) {
-        let toReturn = window.localStorage.getItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.KEY_DARK_MODE);
-        if (!toReturn)
-            toReturn = defaultTheme;
-        return toReturn;
-    }
-    // SET API BASE URL OR HOSTNAME
-    static setApiHostname(hostname) {
-        window.localStorage.setItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.API_HOSTNAME_KEY, hostname);
-    }
-    // GET API BASE URL OR HOSTNAME
-    static getApiHostname() {
-        var hostname = window.localStorage.getItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.API_HOSTNAME_KEY);
-        if (!hostname)
-            hostname = _contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.DEFAULT_API_HOSTNAME;
-        return hostname;
-    }
-    // USSD USSD SHORT CODE
-    static setUssdShortcode(shortcode) {
-        window.localStorage.setItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.USSD_SHORTCODE_KEY, shortcode);
-    }
-    // GET USSD SHORT CODE
-    static getUssdShortcode() {
-        var shortcode = window.localStorage.getItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.USSD_SHORTCODE_KEY);
-        if (!shortcode)
-            shortcode = _contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.DEFAULT_USSD_SHORTCODE;
-        return shortcode;
-    }
-}
-
-
-/***/ }),
-
 /***/ 53862:
 /*!**************************************************!*\
   !*** ./src/app/zones/zones.page.scss?ngResource ***!

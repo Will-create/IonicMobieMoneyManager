@@ -182,55 +182,6 @@ HomePage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
 
 /***/ }),
 
-/***/ 71220:
-/*!*************************************!*\
-  !*** ./src/models/helper.models.ts ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Helper": () => (/* binding */ Helper)
-/* harmony export */ });
-/* harmony import */ var _contants_models__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./contants.models */ 64879);
-
-class Helper {
-    static seThemeMode(status) {
-        window.localStorage.setItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.KEY_DARK_MODE, status);
-    }
-    static getThemeMode(defaultTheme) {
-        let toReturn = window.localStorage.getItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.KEY_DARK_MODE);
-        if (!toReturn)
-            toReturn = defaultTheme;
-        return toReturn;
-    }
-    // SET API BASE URL OR HOSTNAME
-    static setApiHostname(hostname) {
-        window.localStorage.setItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.API_HOSTNAME_KEY, hostname);
-    }
-    // GET API BASE URL OR HOSTNAME
-    static getApiHostname() {
-        var hostname = window.localStorage.getItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.API_HOSTNAME_KEY);
-        if (!hostname)
-            hostname = _contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.DEFAULT_API_HOSTNAME;
-        return hostname;
-    }
-    // USSD USSD SHORT CODE
-    static setUssdShortcode(shortcode) {
-        window.localStorage.setItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.USSD_SHORTCODE_KEY, shortcode);
-    }
-    // GET USSD SHORT CODE
-    static getUssdShortcode() {
-        var shortcode = window.localStorage.getItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.USSD_SHORTCODE_KEY);
-        if (!shortcode)
-            shortcode = _contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.DEFAULT_USSD_SHORTCODE;
-        return shortcode;
-    }
-}
-
-
-/***/ }),
-
 /***/ 1020:
 /*!************************************************!*\
   !*** ./src/app/home/home.page.scss?ngResource ***!
@@ -247,7 +198,7 @@ module.exports = "ion-header ion-toolbar ion-title {\n  padding: 0 15px !importa
   \************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n    <ion-toolbar>\n        <ion-title><span>{{'app_title' | translate}} {{'app_title_2' | translate}}</span></ion-title>\n    </ion-toolbar>\n    <div class=\"banner\">\n        <div class=\"scroll_container\">\n            <div class=\"item_scroll animate__animated animate__zoomIn\"  *ngFor=\"let distributor of distributors\" (click)=\"statement()\">\n                <h3 class=\"animate__animated animate__fadeInUp\">{{ distributor.ismother ? 'Distributeur Mere'  : 'Distributeur'}}</h3>\n                <h2 class=\"animate__animated animate__fadeInUp\">{{distributor.number}}</h2>\n                <h5 class=\"animate__animated animate__fadeInUp\">  {{distributor.balance}} XOF</h5>\n            </div>\n        </div>\n    </div>\n</ion-header>\n<ion-content>\n    <div class=\"home_menu\">\n        <ion-row>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"zones()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"earth-outline\"></ion-icon>\n                    </div>\n                    <p>{{'zones' | translate}}</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"localites()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"location-outline\"></ion-icon>\n                    </div>\n                    <p>{{'localites' | translate}}</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"contacts()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"people-outline\"></ion-icon>\n                    </div>\n                    <p>{{'contacts' | translate}}</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"deposits()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"cloud-upload-outline\"></ion-icon>\n                    </div>\n                    <p>{{'deposits' | translate}}</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"withdrawals()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"cloud-download-outline\"></ion-icon>\n                    </div>\n                    <p>{{'withdrawals' | translate}}</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"stats()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"radio-outline\"></ion-icon>\n                    </div>\n                    <p>{{'network' | translate}}</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"account()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"person-outline\"></ion-icon>\n                    </div>\n                    <p>{{'account' | translate}}</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"settings()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"cog-outline\"></ion-icon>\n                    </div>\n                    <p>{{'settings' | translate}}</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"ellipsis-horizontal-outline\"></ion-icon>\n                    </div>\n                    <p>{{'more' | translate}}</p>\n                </div>\n            </ion-col>\n        </ion-row>\n    </div>\n    <ion-list lines=\"none\">\n      \n    </ion-list>\n</ion-content>";
+module.exports = "<ion-header>\n    <ion-toolbar>\n        <ion-title><span>OM Manager</span></ion-title>\n    </ion-toolbar>\n    <div class=\"banner\">\n        <div class=\"scroll_container\">\n            <div class=\"item_scroll animate__animated animate__zoomIn\"  *ngFor=\"let distributor of distributors\" (click)=\"statement()\">\n                <h3 class=\"animate__animated animate__fadeInUp\">{{ distributor.ismother ? 'Distributeur Mere'  : 'Distributeur'}}</h3>\n                <h2 class=\"animate__animated animate__fadeInUp\">{{distributor.number}}</h2>\n                <h5 class=\"animate__animated animate__fadeInUp\">  {{distributor.balance}} XOF</h5>\n            </div>\n        </div>\n    </div>\n</ion-header>\n<ion-content>\n    <div class=\"home_menu\">\n        <ion-row>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"zones()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"earth-outline\"></ion-icon>\n                    </div>\n                    <p>Zones</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"localites()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"location-outline\"></ion-icon>\n                    </div>\n                    <p>Localités</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"contacts()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"people-outline\"></ion-icon>\n                    </div>\n                    <p>Contacts</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"deposits()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"cloud-upload-outline\"></ion-icon>\n                    </div>\n                    <p>Transferts envoyés</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"withdrawals()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"cloud-download-outline\"></ion-icon>\n                    </div>\n                    <p>Transferts <br> Réçus</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"stats()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"radio-outline\"></ion-icon>\n                    </div>\n                    <p>Numeros <br> Agents</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"account()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"person-outline\"></ion-icon>\n                    </div>\n                    <p>Compte</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\" (click)=\"settings()\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"cog-outline\"></ion-icon>\n                    </div>\n                    <p>Paramètres</p>\n                </div>\n            </ion-col>\n            <ion-col class=\"animate__animated animate__fadeInUp\" size=\"4\">\n                <div class=\"menu_item ion-text-center\">\n                    <div class=\"icon_box\">\n                        <ion-icon name=\"ellipsis-horizontal-outline\"></ion-icon>\n                    </div>\n                    <p>Autres</p>\n                </div>\n            </ion-col>\n        </ion-row>\n    </div>\n    <ion-list lines=\"none\">\n    </ion-list>\n</ion-content>";
 
 /***/ })
 

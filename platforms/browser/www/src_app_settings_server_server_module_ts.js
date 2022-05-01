@@ -158,55 +158,6 @@ ServerPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
 
 /***/ }),
 
-/***/ 71220:
-/*!*************************************!*\
-  !*** ./src/models/helper.models.ts ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Helper": () => (/* binding */ Helper)
-/* harmony export */ });
-/* harmony import */ var _contants_models__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./contants.models */ 64879);
-
-class Helper {
-    static seThemeMode(status) {
-        window.localStorage.setItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.KEY_DARK_MODE, status);
-    }
-    static getThemeMode(defaultTheme) {
-        let toReturn = window.localStorage.getItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.KEY_DARK_MODE);
-        if (!toReturn)
-            toReturn = defaultTheme;
-        return toReturn;
-    }
-    // SET API BASE URL OR HOSTNAME
-    static setApiHostname(hostname) {
-        window.localStorage.setItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.API_HOSTNAME_KEY, hostname);
-    }
-    // GET API BASE URL OR HOSTNAME
-    static getApiHostname() {
-        var hostname = window.localStorage.getItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.API_HOSTNAME_KEY);
-        if (!hostname)
-            hostname = _contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.DEFAULT_API_HOSTNAME;
-        return hostname;
-    }
-    // USSD USSD SHORT CODE
-    static setUssdShortcode(shortcode) {
-        window.localStorage.setItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.USSD_SHORTCODE_KEY, shortcode);
-    }
-    // GET USSD SHORT CODE
-    static getUssdShortcode() {
-        var shortcode = window.localStorage.getItem(_contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.USSD_SHORTCODE_KEY);
-        if (!shortcode)
-            shortcode = _contants_models__WEBPACK_IMPORTED_MODULE_0__.Constants.DEFAULT_USSD_SHORTCODE;
-        return shortcode;
-    }
-}
-
-
-/***/ }),
-
 /***/ 51096:
 /*!*************************************************************!*\
   !*** ./src/app/settings/server/server.page.scss?ngResource ***!
@@ -223,7 +174,7 @@ module.exports = "ion-header ion-toolbar ion-title h2 {\n  font-size: 1.1rem;\n 
   \*************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\">\n\t\t\t<ion-back-button text=\"\" icon=\"chevron-back-outline\"></ion-back-button>\n\t\t</ion-buttons>\n\t\t<ion-title>\n\t\t\t<h2>\n\t\t\t\t{{'server_settings' | translate }}\n\t\t\t\n\t\t\t</h2>\n\t\t</ion-title>\n\t</ion-toolbar>\n</ion-header>\n<ion-content fullscreen class=\"bg_color\">\n\t<form [formGroup]=\"serverForm\" (ngSubmit)=\"save()\" class=\"form\">\n\t\t<ion-list lines=\"none\">\n\t\t\t<h2 class=\"d-flex animate__animated animate__fadeInUp\">{{'server_address' | translate }}</h2>\n\t\t\t<ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n\t\t\t\t<ion-input type=\"text\" formControlName=\"hostname\" placeholder=\"{{'server_address' | translate}}\"></ion-input>\n\t\t\t</ion-item>\n\t\t</ion-list>\n\t</form>\n\t<ion-footer class=\"ion-no-border animate__animated animate__fadeInUp\">\n\t\t<ion-button size=\"large\" shape=\"block\" class=\"btn\" (click)=\"save()\">{{'save' | translate}}</ion-button>\n\t</ion-footer>\n</ion-content>\n";
+module.exports = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\">\n\t\t\t<ion-back-button text=\"\" icon=\"chevron-back-outline\"></ion-back-button>\n\t\t</ion-buttons>\n\t\t<ion-title>\n\t\t\t<h2>\n\t\t\t\tConnectivité Réseau\n\t\t\t</h2>\n\t\t</ion-title>\n\t</ion-toolbar>\n</ion-header>\n<ion-content fullscreen class=\"bg_color\">\n\t<form [formGroup]=\"serverForm\" (ngSubmit)=\"save()\" class=\"form\">\n\t\t<ion-list lines=\"none\">\n\t\t\t<ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n\t\t\t\t<ion-input type=\"text\" formControlName=\"hostname\" placeholder=\"Adresse du serveur\"></ion-input>\n\t\t\t</ion-item>\n\t\t</ion-list>\n\t</form>\n\t<ion-footer class=\"ion-no-border animate__animated animate__fadeInUp\">\n\t\t<ion-button size=\"large\" shape=\"block\" class=\"btn\" (click)=\"save()\">Sauvegarder</ion-button>\n\t</ion-footer>\n</ion-content>\n";
 
 /***/ })
 

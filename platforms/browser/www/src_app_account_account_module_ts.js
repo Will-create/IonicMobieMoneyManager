@@ -93,14 +93,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AccountPage": () => (/* binding */ AccountPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _account_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./account.page.html?ngResource */ 59024);
 /* harmony import */ var _account_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./account.page.scss?ngResource */ 8365);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 52816);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 52816);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
 /* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../app.config */ 49670);
 /* harmony import */ var _buyappalert_buyappalert_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../buyappalert/buyappalert.page */ 31344);
+/* harmony import */ var src_models_helper_models__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/models/helper.models */ 71220);
+
 
 
 
@@ -116,6 +118,7 @@ let AccountPage = class AccountPage {
         this.navCtrl = navCtrl;
         this.route = route;
         this.modalController = modalController;
+        this.userprofile = JSON.parse(src_models_helper_models__WEBPACK_IMPORTED_MODULE_4__.Helper.getUserProfile());
     }
     ngOnInit() {
     }
@@ -154,13 +157,13 @@ let AccountPage = class AccountPage {
     }
 };
 AccountPage.ctorParameters = () => [
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_4__.Inject, args: [_app_config__WEBPACK_IMPORTED_MODULE_2__.APP_CONFIG,] }] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.NavController },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ModalController }
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_5__.Inject, args: [_app_config__WEBPACK_IMPORTED_MODULE_2__.APP_CONFIG,] }] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.NavController },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__.Router },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.ModalController }
 ];
-AccountPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
+AccountPage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
         selector: 'app-account',
         template: _account_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_account_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -187,7 +190,7 @@ module.exports = "ion-header ion-toolbar ion-title {\n  padding: 0 15px !importa
   \******************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n    <ion-toolbar>\n        <ion-buttons slot=\"start\">\n            <ion-back-button text=\"\" icon=\"chevron-back-outline\"></ion-back-button>\n        </ion-buttons>\n        <ion-title>{{'account' | translate}}</ion-title>\n    </ion-toolbar>\n    <div class=\"banner d-flex\" (click)=\"profile()\">\n        <div class=\"img_box center_img\">\n            <img src=\"assets/imgs/profile.png\" class=\"crop_img\">\n        </div>\n        <div class=\"text\">\n            <h2 class=\"animate__animated animate__fadeInUp\">Sam Smith</h2>\n            <h3 class=\"animate__animated animate__fadeInUp\">{{'view_profile' | translate}}</h3>\n        </div>\n    </div>\n\n    <div *ngIf=\"config.demoMode\" (click)=\"buyappalert()\" class=\"buy_this_app\">\n        <h2>\n            <!-- <ion-icon class=\"zmdi zmdi-shopping-cart\"></ion-icon> -->\n            {{\"buy_this_app\" | translate}}\n        </h2>\n    </div>\n</ion-header>\n\n\n<ion-content>\n    <ion-list lines=\"none\">\n        <ion-item class=\"animate__animated animate__fadeInUp\" (click)=\"thumb_impression()\">\n            <div class=\"item_inner\">\n                <h2 class=\"animate__animated animate__fadeInUp\">{{'change_thumb_impression' | translate}}</h2>\n                <p class=\"animate__animated animate__fadeInUp\">{{'change_login_mpin' | translate}}</p>\n            </div>\n        </ion-item>\n        <ion-item class=\"animate__animated animate__fadeInUp\" (click)=\"nearby_bank()\">\n            <div class=\"item_inner\">\n                <h2 class=\"animate__animated animate__fadeInUp\">{{'nearby_bank_atm' | translate}}</h2>\n                <p class=\"animate__animated animate__fadeInUp\">{{'found_nearest' | translate}}</p>\n            </div>\n        </ion-item>\n\n        <ion-item class=\"animate__animated animate__fadeInUp\" (click)=\"change_language()\">\n            <div class=\"item_inner\">\n                <h2 class=\"animate__animated animate__fadeInUp\">{{'change_language' | translate}}</h2>\n                <p class=\"animate__animated animate__fadeInUp\">{{'select_language' | translate}}</p>\n            </div>\n        </ion-item>\n\n        <ion-item class=\"animate__animated animate__fadeInUp\" (click)=\"terms_conditions()\">\n            <div class=\"item_inner\">\n                <h2 class=\"animate__animated animate__fadeInUp\">{{'terms_conditions' | translate}}</h2>\n                <p class=\"animate__animated animate__fadeInUp\">{{'bank_app_conditions' | translate}}</p>\n            </div>\n        </ion-item>\n        <ion-item class=\"animate__animated animate__fadeInUp\" (click)=\"faqs()\">\n            <div class=\"item_inner\">\n                <h2 class=\"animate__animated animate__fadeInUp\">{{'faqs' | translate}}</h2>\n                <p class=\"animate__animated animate__fadeInUp\">{{'faqs_text' | translate}}</p>\n            </div>\n        </ion-item>\n        <ion-item class=\"animate__animated animate__fadeInUp\" (click)=\"support()\">\n            <div class=\"item_inner\">\n                <h2 class=\"animate__animated animate__fadeInUp\">{{'24_support' | translate}}</h2>\n                <p class=\"animate__animated animate__fadeInUp\">{{'24_support_text' | translate}}</p>\n            </div>\n        </ion-item>\n        <ion-item class=\"animate__animated animate__fadeInUp\" (click)=\"sing_in()\">\n            <div class=\"item_inner\">\n                <h2 class=\"animate__animated animate__fadeInUp\">{{'logout' | translate}}</h2>\n                <p class=\"animate__animated animate__fadeInUp\">{{'logout_from_app' | translate}}</p>\n            </div>\n        </ion-item>\n    </ion-list>\n</ion-content>\n\n<ion-footer class=\"ion-no-border animate__animated animate__fadeInUp\" *ngIf=\"config.demoMode\">\n    <div class=\"developed_by d-flex\" (click)=\"developed_by()\">\n        <h2>{{\"developed_by\" | translate}}</h2>\n        <div class=\"img_box ion-text-end end\">\n            <img src=\"assets/imgs/opus.png\" class=\"light-theme-logo\">\n        </div>\n    </div>\n</ion-footer>";
+module.exports = "<ion-header>\n    <ion-toolbar>\n        <ion-buttons slot=\"start\">\n            <ion-back-button text=\"\" icon=\"chevron-back-outline\"></ion-back-button>\n        </ion-buttons>\n        <ion-title>Compte</ion-title>\n    </ion-toolbar>\n    <div class=\"banner d-flex\" (click)=\"profile()\">\n        <div class=\"img_box center_img\">\n            <img src=\"{{userprofile.picture}}\" class=\"crop_img\">\n        </div>\n        <div class=\"text\">\n            <h2 class=\"animate__animated animate__fadeInUp\">{{ userprofile.name}}</h2>\n            <h3 class=\"animate__animated animate__fadeInUp\">Voir le profile</h3>\n        </div>\n    </div>\n\n    <div *ngIf=\"config.demoMode\" (click)=\"buyappalert()\" class=\"buy_this_app\">\n        <h2>\n            <!-- <ion-icon class=\"zmdi zmdi-shopping-cart\"></ion-icon> -->\n            {{\"buy_this_app\" | translate}}\n        </h2>\n    </div>\n</ion-header>\n<ion-content>\n    <ion-list lines=\"none\">\n        <ion-item class=\"animate__animated animate__fadeInUp\" (click)=\"change_language()\">\n            <div class=\"item_inner\">\n                <h2 class=\"animate__animated animate__fadeInUp\">Changer la langue</h2>\n                <p class=\"animate__animated animate__fadeInUp\">Selectionner votre langue</p>\n            </div>\n        </ion-item>\n\n        <ion-item class=\"animate__animated animate__fadeInUp\" (click)=\"terms_conditions()\">\n            <div class=\"item_inner\">\n                <h2 class=\"animate__animated animate__fadeInUp\">Termes et Conditions</h2>\n                <p class=\"animate__animated animate__fadeInUp\">Conditions generales d'utilisation de l'application</p>\n            </div>\n        </ion-item>\n        <ion-item class=\"animate__animated animate__fadeInUp\" (click)=\"faqs()\">\n            <div class=\"item_inner\">\n                <h2 class=\"animate__animated animate__fadeInUp\">FAQs</h2>\n                <p class=\"animate__animated animate__fadeInUp\">Questions frequenment posees</p>\n            </div>\n        </ion-item>\n        <ion-item class=\"animate__animated animate__fadeInUp\" (click)=\"support()\">\n            <div class=\"item_inner\">\n                <h2 class=\"animate__animated animate__fadeInUp\">Aide et Support</h2>\n                <p class=\"animate__animated animate__fadeInUp\">Disponible 24/7j</p>\n            </div>\n        </ion-item>\n        <ion-item class=\"animate__animated animate__fadeInUp\" (click)=\"sing_in()\">\n            <div class=\"item_inner\">\n                <h2 class=\"animate__animated animate__fadeInUp\">Deconnexion</h2>\n            </div>\n        </ion-item>\n    </ion-list>\n</ion-content>\n\n<ion-footer class=\"ion-no-border animate__animated animate__fadeInUp\" *ngIf=\"config.demoMode\">\n    <div class=\"developed_by d-flex\" (click)=\"developed_by()\">\n        <h2>{{\"developed_by\" | translate}}</h2>\n        <div class=\"img_box ion-text-end end\">\n            <img src=\"assets/imgs/opus.png\" class=\"light-theme-logo\">\n        </div>\n    </div>\n</ion-footer>";
 
 /***/ })
 

@@ -19,11 +19,13 @@ export class ShortformsPage implements OnInit {
   private baseUrl : string ;
   private shortCode : string ;
   public distributors ;
-  private agent;
+  public agent;
+  private dialmode : string;
   constructor( private formBuilder : FormBuilder, private toastCtrl : ToastController,private router : Router,private http: HttpClient) { 
     // load base url
     this.baseUrl = Helper.getApiHostname();
     this.shortCode = Helper.getUssdShortcode();
+    this.dialmode = Helper.getDialMode();
     if(this.router.getCurrentNavigation().extras.state){
       this.agent = this.router.getCurrentNavigation().extras.state.number;
     };
@@ -36,43 +38,38 @@ export class ShortformsPage implements OnInit {
       distributor_number : '',
       agent_number : this.agent.number,
       passcode : '',
-      amount : 0,
+      amount : '',
     });
   }
 
   ngOnInit() {
   }
   send(){
-  let dist = this.depositForm.get('distributor_number').value;
-  let agent_number = this.depositForm.get('agent_number').value;
-  let amount = this.depositForm.get('amount').value;
-  let passcode = this.depositForm.get('passcode').value;
-  if(!dist){
+    let form = {};
+
+    form['dist'] = this.depositForm.get('distributor_number').value;
+    form['amount'] = this.depositForm.get('amount').value;
+    form['agent_number'] = this.agent.number;
+    form['idreceiver'] = this.agent.id;
+    form['receiver'] = this.agent.ownername;
+    form['tonumber'] = this.agent.number;
+  if(!form['dist']){
     this.presentToast("Numero distributeur est obligatoire", 'bottom', 600);
     return;
   }
-
-  if(!agent_number){
-    this.presentToast("Numero Agent est obligatoire", 'bottom', 600);
-    return;
-  }
-
-  if(!amount){
+  if(!form['amount']){
     this.presentToast("Le Montant est obligatoire", 'bottom', 600);
     return;
   }
-  if(!passcode){
-    this.presentToast("Le Mot de passe est obligatoire est obligatoire", 'bottom', 600);
-    return;
-  }
-  let code = this.shortCode+agent_number+"*"+amount+"*"+passcode+"#";
+
+  let code = this.shortCode+form['agent_number']+"*"+form['amount']+"#";
   console.log(code);
+  let extras : NavigationExtras = {state : form}
+  this.router.navigate(['deposits/pending'],extras);
   CallNumber.callNumber(code, false)
   .then(res =>{ 
-    this.presentToast(res, 'bottom', 600);
   })
   .catch(err => {
-    this.presentToast(err, 'bottom', 600);
   });
   }
   err(err){

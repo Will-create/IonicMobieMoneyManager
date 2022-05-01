@@ -60,6 +60,23 @@ ion-header ion-toolbar ion-title {
                     border: 1px solid #ccc !important;
                 }
             }
+
+            .item_inner {
+                width: 100%;
+                margin-top: 0;
+                margin-bottom: 0;
+    
+                ion-radio {
+                    --color-checked: var(--secondary);
+                }
+    
+                h3 {
+                    margin: 0;
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                }
+            }
         }
+        
     }
 }

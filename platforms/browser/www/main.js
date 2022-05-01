@@ -29,7 +29,7 @@ const routes = [
     },
     {
         path: 'account',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_account_account_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./account/account.module */ 63879)).then(m => m.AccountPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_account_account_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./account/account.module */ 63879)).then(m => m.AccountPageModule)
     },
     {
         path: 'add-beneficiary',
@@ -49,7 +49,7 @@ const routes = [
     },
     {
         path: 'home',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_home_home_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./home/home.module */ 3467)).then(m => m.HomePageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_home_home_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./home/home.module */ 3467)).then(m => m.HomePageModule)
     },
     {
         path: 'loan',
@@ -61,7 +61,7 @@ const routes = [
     },
     {
         path: 'profile',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_profile_profile_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./profile/profile.module */ 84523)).then(m => m.ProfilePageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_profile_profile_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./profile/profile.module */ 84523)).then(m => m.ProfilePageModule)
     },
     {
         path: 'sing-in',
@@ -168,7 +168,7 @@ const routes = [
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_deposits_deposits_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./deposits/deposits.module */ 16587)).then(m => m.DepositsPageModule)
     },
     {
-        path: 'deposits/pedding',
+        path: 'deposits/pending',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_deposits_pending_pending_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./deposits/pending/pending.module */ 61304)).then(m => m.PendingPageModule)
     },
     {
@@ -177,11 +177,11 @@ const routes = [
     },
     {
         path: 'settings/generals',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_settings_generals_generals_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./settings/generals/generals.module */ 29634)).then(m => m.GeneralsPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_settings_generals_generals_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./settings/generals/generals.module */ 29634)).then(m => m.GeneralsPageModule)
     },
     {
         path: 'settings/server',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_settings_server_server_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./settings/server/server.module */ 66132)).then(m => m.ServerPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_settings_server_server_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./settings/server/server.module */ 66132)).then(m => m.ServerPageModule)
     },
     {
         path: 'more',
@@ -848,6 +848,10 @@ Constants.DEFAULT_API_HOSTNAME = "http://192.168.0.171:8001/";
 Constants.DEFAULT_USSD_SHORTCODE = "*144*4*1*1*";
 Constants.API_HOSTNAME_KEY = "api_hostname";
 Constants.USSD_SHORTCODE_KEY = "ussd_shortcode";
+Constants.USER_PROFILE_KEY = "user_profile_key";
+Constants.DEFAULT_USER_PROFILE = '{ "name": "SPASS TELECOM", "picture": "assets/imgs/logo.png", "login" : "spass" ,"password" : "0000","phone" : "+226 76 67 88 68"}';
+Constants.DEFAULT_DIAL_MODE = 'select';
+Constants.DIAL_MODE_KEY = 'dial_mode';
 
 
 /***/ }),

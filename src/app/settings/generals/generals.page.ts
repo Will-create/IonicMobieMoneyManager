@@ -27,11 +27,9 @@ export class GeneralsPage implements OnInit {
  }
  async presentToast() {
   const toast = await this.toastCtrl.create({
-    header : 'S.PASS TELECOM',
     message: 'Enregistre avec succes',
     duration: 2500,
-    icon: 'checkmark-done-outline',
-    position: 'top',
+    position: 'bottom',
   });
   setTimeout(()=>{
   this.router.navigate(['/tabs/home']);

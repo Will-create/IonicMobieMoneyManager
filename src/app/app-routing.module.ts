@@ -152,7 +152,7 @@ const routes: Routes = [
     loadChildren: () => import('./deposits/deposits.module').then( m => m.DepositsPageModule)
   },
   {
-    path: 'deposits/pedding',
+    path: 'deposits/pending',
     loadChildren: () => import('./deposits/pending/pending.module').then( m => m.PendingPageModule)
   },
   {
