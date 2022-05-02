@@ -170,7 +170,11 @@ const routes: Routes = [
   {
     path: 'more',
     loadChildren: () => import('./more/more.module').then( m => m.MorePageModule)
+  },  {
+    path: 'distributors',
+    loadChildren: () => import('./distributors/distributors.module').then( m => m.DistributorsPageModule)
   },
+
 ];
 @NgModule({
   imports: [

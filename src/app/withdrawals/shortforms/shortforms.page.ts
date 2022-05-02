@@ -47,6 +47,12 @@ export class ShortformsPage implements OnInit {
   }
   send(){
     let form = {};
+    form['dist'] = this.depositForm.get('distributor_number').value;
+    form['agent_number'] = this.agent.number;
+    form['user'] = this.currentUser;
+    form['idsender'] = this.agent.id;
+    form['sender'] = this.agent.ownername;
+    form['fromnumber'] = this.agent.number;
   form['dist'] = this.depositForm.get('distributor_number').value;
   form['agent_number'] = this.depositForm.get('agent_number').value;
   form['sms'] = this.depositForm.get('sms').value;
@@ -65,30 +71,35 @@ export class ShortformsPage implements OnInit {
   let firstpart = sms.split(',')[0];
   form['number'] = firstpart.substring(firstpart.length - 8,firstpart.length);
   console.log(form);
-  }
-
-  later(sms? : string, transid? : string, amountsms? : string,numbersms? : string){
-    let form = this.previous;
-    form['sms'] = sms || '';
-    form['user'] = this.currentUser;
-    form['transid'] = transid || '';
-    form['amountsms'] = amountsms || '';
-    console.log(form);
-    this.http.post(this.baseUrl+'api/mobile/deposits/post',form,this.httpOptions).subscribe(insertion =>{
+  var self = this;
+  this.checkIftransactionExist('withdrawals',form['transid'],function(exist){
+   if(exist){
+     self.presentToast('La transaction existe deja, verifiez le sms');
+     return;
+   }
+    self.http.post(self.baseUrl+'api/mobile/withdrawals/post',form,self.httpOptions).subscribe(insertion =>{
       console.log(insertion);
     if(insertion['success']){
-     this.presentToast('Transfert enregistre avec succes');
+     self.presentToast('Transfert enregistre avec succes');
      let state = insertion['value'];
-     state['type'] = 'sending';
+     state['type'] = 'receiving';
      let extras : NavigationExtras = {
        state : insertion['value']
      }
-     this.router.navigate(['transfered-successfully'],extras);
+     self.router.navigate(['transfered-successfully'],extras);
     }else{
-     this.presentToast(insertion[0].error);
+     self.presentToast(insertion[0].error);
     }
     })
+  })
   }
+
+ checkIftransactionExist(table,transid,callback){
+  this.http.get(this.baseUrl+'api/mobile/transactions/service?table='+table+'&transid='+transid,this.httpOptions).subscribe(response=>{
+    console.log(response);
+    callback(response['value']);
+  })
+ }
   async presentToast(message) {
     const toast = await this.toastCtrl.create({
       message: message,

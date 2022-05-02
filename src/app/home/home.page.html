@@ -4,7 +4,7 @@
     </ion-toolbar>
     <div class="banner">
         <div class="scroll_container">
-            <div class="item_scroll animate__animated animate__zoomIn"  *ngFor="let distributor of distributors" (click)="statement()">
+            <div class="item_scroll animate__animated animate__zoomIn"  *ngFor="let distributor of distributors" (click)="dist(distributor)">
                 <h3 class="animate__animated animate__fadeInUp">{{ distributor.ismother ? 'Distributeur Mere'  : 'Distributeur'}}</h3>
                 <h2 class="animate__animated animate__fadeInUp">{{distributor.number}}</h2>
                 <h5 class="animate__animated animate__fadeInUp">  {{distributor.balance}} XOF</h5>

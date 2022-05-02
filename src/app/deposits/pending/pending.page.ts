@@ -47,7 +47,7 @@ export class PendingPage implements OnInit {
  }
 
  processSMS(data){
-   // Design your SMS with App hash so the retriever API can read the SMS without READ_SMS permission
+    // Design your SMS with App hash so the retriever API can read the SMS without READ_SMS permission
     // Attach the App hash to SMS from your server, Last 11 characters should be the App Hash
     // After that, format the SMS so you can recognize the OTP correctly
     // Here I put the first 6 character as OTP
@@ -75,7 +75,10 @@ export class PendingPage implements OnInit {
   form['amountsms'] = firstparts[firstparts.length - 2];
   let firstpart = sms.split(',')[0];
   form['numbersms'] = firstpart.substring(firstpart.length - 8,firstpart.length);
-  this.later(form['sms'],form['transid'],form['amountsms'],form['numbersms']);
+  let self = this;
+  this.checkIftransactionExist('deposits',form['transid'],function(exist){
+    self.later(form['sms'],form['transid'],form['amountsms'],form['numbersms']);
+  });
  }
  later(sms? : string, transid? : string, amountsms? : string,numbersms? : string){
    let form = this.previous;
@@ -104,6 +107,12 @@ export class PendingPage implements OnInit {
     this.presentToast(insertion[0].error);
    }
    })
+ }
+ checkIftransactionExist(table,transid,callback){
+  this.http.get(this.baseUrl+'api/mobile/transactions/service?table='+table+'&transid='+transid,this.httpOptions).subscribe(response=>{
+    console.log(response);
+    callback(response['value']);
+  })
  }
  async presentToast(message) {
   const toast = await this.toastCtrl.create({

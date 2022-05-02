@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHandler, HttpHeaders } from "@angular/common/http";
 import { Constants } from "./contants.models";
 export class USER {
     name : string ;
@@ -8,6 +8,10 @@ export class USER {
     phone : string ;
 }
 export class Helper {
+    static httpOptions = {
+        Headers : new HttpHeaders({'Content-Type' : 'application/json'})
+    };
+    static http : HttpClient;
     static seThemeMode(status: string) {
         window.localStorage.setItem(Constants.KEY_DARK_MODE, status);
     }
@@ -63,6 +67,15 @@ export class Helper {
         }
         return dialmode;
     }
+    static checkTransactionExist(table,transid,callback){
+        let options = { method : 'GET', headers :{'Content-Type':'application/json'}}
+  fetch(this.getApiHostname()+'api/mobile/transactions/service?table='+table+'&transid='+transid,options).then(res=>{
+        let response = res.json();
+        console.log('From server',response)
+            callback(response['value']);
+        });
+         
+    };
 
 
 }

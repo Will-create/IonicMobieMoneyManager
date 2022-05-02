@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { Helper } from 'src/models/helper.models';
 
 @Component({
@@ -69,6 +69,11 @@ export class HomePage implements OnInit {
  loan_info() {
     this.route.navigate(['./loan-info']);
   } 
-
+  dist(dist){
+    let extras :NavigationExtras = {
+      state : dist
+    }
+    this.route.navigate(['distributors'],extras);
+  }
 }
  
