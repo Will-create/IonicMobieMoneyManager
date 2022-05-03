@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title>En attente de sms</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="bg_color" fullscreen>
+  <ion-list lines="none">
+      <div class="list_header ion-text-center animate__animated animate__fadeInUp">
+          <ion-icon class="zmdi zmdi-spinner animate__animated animate__zoomIn"></ion-icon>
+          <h1>En attente du message</h1>
+      </div>
+      <form class="form" [formGroup]="finalForm" (ngSubmit)="send()">
+		<ion-list class="bg_color" lines="none">
+			<ion-item class="animate__animated animate__fadeInUp" lines="none">
+				<ion-textarea rows="5" formControlName="sms" placeholder="Coller le sms de transfert que vous avez recu ici"></ion-textarea>
+			</ion-item>
+		</ion-list>
+    <ion-footer class="ion-no-border animate__animated animate__fadeInUp">
+      <ion-button size="small" (click)="send()" shape="block" class="btn" >Envoyer</ion-button>
+      </ion-footer>
+	</form>
+  </ion-list>
+  <ion-footer class="ion-no-border animate__animated animate__fadeInUp">
+    <ion-row>
+        <ion-col size="6">
+            <ion-button size="large" shape="block" class="btn" (click)="tabs()">Annuler</ion-button>
+        </ion-col>
+        
+    </ion-row>
+  </ion-footer>
+</ion-content>
+

@@ -1,9 +1,21 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>pending</ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+		<ion-title>Transactions en attente | {{ distributor.number }}</ion-title>
+	</ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+	<ion-list lines="none">
+		<h2>Transactions en attente</h2>
+		<ion-item class="animate__animated animate__fadeInUp" *ngFor="let pending of pendings" (click)="details(pending)">
+			<div class="item_inner">
+				<h3 class="d-flex"> <h4 class="d-flex">En cours vers : </h4> {{ pending.tonumber }}</h3>
+				<h4 class="d-flex">{{ pending.datecreated }}<span class="end">{{pending.amount}} Fcfa</span></h4><br>
+				<h3 class="d-flex">SMS </h3>
+				<h4 class="d-flex">{{ pending.sms }} </h4>
+			</div>
+		</ion-item>
+	</ion-list>
 </ion-content>

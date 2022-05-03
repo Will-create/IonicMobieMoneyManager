@@ -49,7 +49,7 @@ export class ShortformsPage implements OnInit {
 
     form['dist'] = this.depositForm.get('distributor_number').value;
     form['amount'] = this.depositForm.get('amount').value;
-    form['agent_number'] = this.agent.number;
+    form['agent_number'] = this.agent.agentcode;
     form['idreceiver'] = this.agent.id;
     form['receiver'] = this.agent.ownername;
     form['tonumber'] = this.agent.number;
@@ -62,7 +62,7 @@ export class ShortformsPage implements OnInit {
     return;
   }
 
-  let code = this.shortCode+form['agent_number']+"*"+form['amount']+"#";
+  let code = this.shortCode.replace('numero',form['agent_number']).replace('montant',form['amount']).replace('#','#');
   console.log(code);
   let extras : NavigationExtras = {state : form}
   this.router.navigate(['deposits/pending'],extras);

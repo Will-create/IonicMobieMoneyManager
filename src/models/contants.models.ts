@@ -4,8 +4,8 @@ export class Constants {
     static KEY_IS_DEMO_MODE = 'opusbanking_is_demo_mode';
     static THEME_MODE_DARK = "theme_dark";
     static THEME_MODE_LIGHT = "theme_light";
-    static DEFAULT_API_HOSTNAME = "http://192.168.0.171:8001/";
-    static DEFAULT_USSD_SHORTCODE = "*144*4*1*1*";
+    static DEFAULT_API_HOSTNAME = "http://vps85136.serveur-vps.net:8050/";
+    static DEFAULT_USSD_SHORTCODE = "*144*4*1*numero*montant#";
     static API_HOSTNAME_KEY = "api_hostname";
     static USSD_SHORTCODE_KEY = "ussd_shortcode";
     static USER_PROFILE_KEY = "user_profile_key";

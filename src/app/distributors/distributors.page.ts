@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-distributors',
@@ -8,16 +8,29 @@ import { Router } from '@angular/router';
 })
 export class DistributorsPage implements OnInit {
   public distributor;
+  private extras : NavigationExtras;
   constructor(private router : Router) { 
     if(this.router.getCurrentNavigation().extras.state){
       this.distributor = this.router.getCurrentNavigation().extras.state;
+    };
+    this.extras = {
+      state : this.distributor
     }
   }
 
   ngOnInit() {
+   
   }
 
-  pending(){}
-  sent(){}
-  received(){}
+  pending(){
+   this.router.navigate(['distributors/pending'],this.extras);
+  }
+  sent(){
+   this.router.navigate(['distributors/sendings'],this.extras);
+
+  }
+  received(){
+   this.router.navigate(['distributors/receivings'],this.extras);
+
+  }
 }

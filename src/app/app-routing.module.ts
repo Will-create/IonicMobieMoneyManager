@@ -170,11 +170,27 @@ const routes: Routes = [
   {
     path: 'more',
     loadChildren: () => import('./more/more.module').then( m => m.MorePageModule)
-  },  {
+  },
+  {
     path: 'distributors',
     loadChildren: () => import('./distributors/distributors.module').then( m => m.DistributorsPageModule)
   },
-
+  {
+    path: 'distributors/pending',
+    loadChildren: () => import('./distributors/pending/pending.module').then( m => m.PendingPageModule)
+  },
+  {
+    path: 'distributors/pending/details',
+    loadChildren: () => import('./distributors/pending/details/details.module').then( m => m.DetailsPageModule)
+  },
+  {
+    path: 'distributors/sendings',
+    loadChildren: () => import('./distributors/sendings/sendings.module').then( m => m.SendingsPageModule)
+  },
+  {
+    path: 'distributors/receivings',
+    loadChildren: () => import('./distributors/receivings/receivings.module').then( m => m.ReceivingsPageModule)
+  },
 ];
 @NgModule({
   imports: [

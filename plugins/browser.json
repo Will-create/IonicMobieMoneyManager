@@ -19,7 +19,7 @@
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
-    "cordova-plugin-sms-retriever-manager": {
+    "cordova-plugin-sms-receive": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
     "cordova-plugin-splashscreen": {
@@ -31,13 +31,7 @@
     "cordova-plugin-vibration": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
-    "cordova-sqlite-storage": {
-      "PACKAGE_NAME": "com.verbosetech.opusbanking"
-    },
     "mx.ferreyra.callnumber": {
-      "PACKAGE_NAME": "com.verbosetech.opusbanking"
-    },
-    "ng.neiel.cordova.plugins.ussd": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     }
   },

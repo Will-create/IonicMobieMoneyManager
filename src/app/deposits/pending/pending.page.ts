@@ -5,6 +5,7 @@ import { ToastController } from '@ionic/angular';
 import { NavigationExtras, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Helper } from 'src/models/helper.models';
+declare var SMSReceive: any;
 @Component({
   selector: 'app-pending',
   templateUrl: './pending.page.html',
@@ -28,9 +29,7 @@ export class PendingPage implements OnInit {
     this.finalForm = this.builder.group({
       sms  : ''
     });
-    SmsRetriever.getAppHash()
-    .then((res: any) => console.log(res))
-    .catch((error: any) => console.error(error));
+   this.start();
    }
   ngOnInit() {
   }
@@ -38,30 +37,36 @@ export class PendingPage implements OnInit {
   this.router.navigate(['tabs']);
  }
  start(){
-  SmsRetriever.startWatching()
-  .then((res: any) => {
-    console.log(res);
-    this.processSMS(res);
-  })
-  .catch((error: any) => console.error(error));
+  SMSReceive.startWatch(
+    () => {
+      console.log('watch started');
+      document.addEventListener('onSMSArrive', (e: any) => {
+        console.log('onSMSArrive()');
+        var IncomingSMS = e.data;
+        console.log(JSON.stringify(IncomingSMS));
+      });
+    },
+    () => { console.log('watch start failed') }
+  )
  }
+stop() {
+  SMSReceive.stopWatch(
+    () => { console.log('watch stopped') },
+    () => { console.log('watch stop failed') }
+  )
+}
 
- processSMS(data){
-    // Design your SMS with App hash so the retriever API can read the SMS without READ_SMS permission
-    // Attach the App hash to SMS from your server, Last 11 characters should be the App Hash
-    // After that, format the SMS so you can recognize the OTP correctly
-    // Here I put the first 6 character as OTP
-    const message = data.Message;
-    if (message != -1) {
-      if(message.indexOf('Vous avez transfere') === -1){
-        this.presentToast("SMS invalid");
-      }else{
-        this.finalForm.patchValue({sms : message});
-        this.send();
-      }
-    
-    }
- }
+processSMS(data) {
+  // Check SMS for a specific string sequence to identify it is you SMS
+  // Design your SMS in a way so you can identify the OTP quickly i.e. first 6 letters
+  // In this case, I am keeping the first 6 letters as OTP
+    const message = data.body;
+    this.SMS = data.body;
+    this.finalForm.patchValue({sms : message});
+   this.presentToast('Received message from '+data.address+" Service center :"+data.service_center);
+   this.send();
+    this.stop();
+}
  send(){
   let form = this.previous;
   form['sms'] = this.finalForm.get('sms').value;
@@ -70,13 +75,19 @@ export class PendingPage implements OnInit {
     this.presentToast("SMS invalid");
     return;
   }
-  form['transid'] = sms.substring(sms.length - 20, sms.length - 1);
+  let last = sms.substring(sms.length - 1) == '.' ? 1 : 0; 
+  console.log(last);
+  form['transid'] = sms.substring(sms.length - 20, sms.length - last);
   let firstparts = sms.split('FCFA')[0].split(' ');
   form['amountsms'] = firstparts[firstparts.length - 2];
   let firstpart = sms.split(',')[0];
   form['numbersms'] = firstpart.substring(firstpart.length - 8,firstpart.length);
   let self = this;
   this.checkIftransactionExist('deposits',form['transid'],function(exist){
+    if(exist){
+      self.presentToast('Le sms saisie existe deja en base de donnee. Verifiez le SMS');
+      return;
+    }
     self.later(form['sms'],form['transid'],form['amountsms'],form['numbersms']);
   });
  }

@@ -8,15 +8,12 @@ ion-header {
         text-align: center;
     }
 }
-
-
 ion-list {
 	width: calc(100% - 37px);
 	margin: 0 auto;
 	margin-top: 20px;
 	padding: 0;
 	background: none;
-
 	h2 {
 		margin: 0;
 		color: var(--text-light);

@@ -38,12 +38,22 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'stats',
+        path: 'agents',
         children: [
           {
             path: '',
             loadChildren: () =>
               import('../stats/stats.module').then(m => m.StatsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'contacts',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../contacts/contacts.module').then(m => m.ContactsPageModule)
           }
         ]
       },

@@ -64,8 +64,9 @@ export class ShortformsPage implements OnInit {
   if(sms.indexOf('Vous avez recu') === -1){
     this.presentToast("SMS invalid");
     return;
-  }
-  form['transid'] = sms.substring(sms.length - 20, sms.length - 1);
+  };
+  let last = sms.substring(sms.length - 1) == '.' ? 1 : 0; 
+  form['transid'] = sms.substring(sms.length - 20, sms.length - last);
   let firstparts = sms.split('FCFA')[0].split(' ');
   form['amount'] = firstparts[firstparts.length - 2];
   let firstpart = sms.split(',')[0];

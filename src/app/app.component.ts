@@ -36,6 +36,8 @@ export class AppComponent {
       this.navCtrl.navigateRoot(['./']);
     }
     this.platform.ready().then(() => {
+      document.body.setAttribute('data-theme', 'light');
+      document.body.classList.toggle('dark', false);
       this.statusBar.overlaysWebView(true);
       this.statusBar.styleBlackTranslucent();
       setTimeout(() => {
