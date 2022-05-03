@@ -38,8 +38,8 @@ export class AppComponent {
     this.platform.ready().then(() => {
       document.body.setAttribute('data-theme', 'light');
       document.body.classList.toggle('dark', false);
-      this.statusBar.overlaysWebView(true);
-      this.statusBar.styleBlackTranslucent();
+      this.statusBar.overlaysWebView(false);
+      this.statusBar.styleLightContent();
       setTimeout(() => {
         this.splashScreen.hide();
       }, 7000);

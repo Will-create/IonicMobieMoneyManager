@@ -7,6 +7,9 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "com.verbosetech.opusbanking"
+    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
@@ -14,6 +17,9 @@
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
     "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.verbosetech.opusbanking"
+    },
+    "cordova-plugin-sms-receive": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
     "cordova-plugin-sms-retriever-manager": {
@@ -26,7 +32,7 @@
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
-    "cordova-sqlite-storage": {
+    "cordova-plugin-vibration": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
     "mx.ferreyra.callnumber": {

@@ -39,20 +39,21 @@ export class PendingPage implements OnInit {
  start(){
   SMSReceive.startWatch(
     () => {
-      console.log('watch started');
+      this.presentToast('watch started');
       document.addEventListener('onSMSArrive', (e: any) => {
         console.log('onSMSArrive()');
         var IncomingSMS = e.data;
-        console.log(JSON.stringify(IncomingSMS));
+        this.presentToast(JSON.stringify(IncomingSMS));
+        this.processSMS(IncomingSMS);
       });
     },
-    () => { console.log('watch start failed') }
+    () => {  this.presentToast('watch start failed') }
   )
  }
 stop() {
   SMSReceive.stopWatch(
-    () => { console.log('watch stopped') },
-    () => { console.log('watch stop failed') }
+    () => {  this.presentToast('watch stopped') },
+    () => {  this.presentToast('watch stop failed') }
   )
 }
 
