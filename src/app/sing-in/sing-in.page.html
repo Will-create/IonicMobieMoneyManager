@@ -5,23 +5,21 @@
         </ion-title>
     </ion-toolbar>
 </ion-header>
-
-<ion-content fullscreen class="bg_color">
-    <div class="banner">
-        <h2 class="ion-text-center animate__animated animate__zoomIn">
-                 
-            <span>OM MANAGER</span> <br>
-        </h2>
+<ion-content fullscreen>
+    <div style="background-color: #fff;" class="banner">
+       <div style="width: 100%;height:200px;padding:0 20px 0 20px">
+           <img style="width: 100%;height:100%" src="assets/imgs/logo.png">
+       </div>
     </div>
-    <div class="form">
+    <form [formGroup]="loginForm" class="form">
         <ion-list lines="none">
-            <ion-item class="animate__animated animate__fadeInUp" lines="none">
-                <ion-input type="email" placeholder="Email"></ion-input>
+            <ion-item class="animate__animated animate__fadeInUp">
+                <ion-input formControlName="login"  type="text" placeholder="Nom d'utilisateur ou Numero"></ion-input>
             </ion-item>
-            <ion-item class="animate__animated animate__fadeInUp" lines="none">
-                <ion-input type="text" placeholder="Mot de passe"></ion-input>
+            <ion-item class="animate__animated animate__fadeInUp">
+                <ion-input formControlName="password" type="text" placeholder="Mot de passe"></ion-input>
             </ion-item>
             <ion-button size="large" shape="block animate__animated animate__fadeInUp" class="btn" (click)="tabs()">Connexion</ion-button>
         </ion-list>
-    </div>
+    </form>
 </ion-content>

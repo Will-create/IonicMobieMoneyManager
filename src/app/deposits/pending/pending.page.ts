@@ -114,8 +114,10 @@ processSMS(data) {
     let extras : NavigationExtras = {
       state : insertion['value']
     }
+    this.stop();
     this.router.navigate(['transfered-successfully'],extras);
    }else{
+     this.stop();
     this.presentToast(insertion[0].error);
    }
    })

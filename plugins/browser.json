@@ -22,6 +22,9 @@
     "cordova-plugin-sms-receive": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
+    "cordova-plugin-sms-retriever-manager": {
+      "PACKAGE_NAME": "com.verbosetech.opusbanking"
+    },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
@@ -32,6 +35,9 @@
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     },
     "mx.ferreyra.callnumber": {
+      "PACKAGE_NAME": "com.verbosetech.opusbanking"
+    },
+    "ng.neiel.cordova.plugins.ussd": {
       "PACKAGE_NAME": "com.verbosetech.opusbanking"
     }
   },

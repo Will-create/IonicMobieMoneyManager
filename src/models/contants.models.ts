@@ -9,7 +9,7 @@ export class Constants {
     static API_HOSTNAME_KEY = "api_hostname";
     static USSD_SHORTCODE_KEY = "ussd_shortcode";
     static USER_PROFILE_KEY = "user_profile_key";
-    static DEFAULT_USER_PROFILE = '{ "name": "SPASS TELECOM", "picture": "assets/imgs/logo.png", "login" : "spass" ,"password" : "0000","phone" : "+226 76 67 88 68"}';
+    static DEFAULT_USER_PROFILE = '{ "name": "SPASS TELECOM", "picture": "assets/imgs/logo.png", "login" : "spass" ,"logged" : false ,"password" : "0000","phone" : "+226 76 67 88 68"}';
     static DEFAULT_DIAL_MODE = 'select';
     static DIAL_MODE_KEY = 'dial_mode';
 }

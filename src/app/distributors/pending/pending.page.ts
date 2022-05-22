@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IonLoaderService } from 'src/app/services/ion-loader.service';
 import { Helper } from 'src/models/helper.models';
 
 @Component({
@@ -17,11 +18,11 @@ export class PendingPage implements OnInit {
   public pendings;
   public pendings_count = 0;
   private extras;
-  constructor(private router : Router, private http : HttpClient) { 
+  constructor(private router : Router, private http : HttpClient, private loadingService : IonLoaderService) { 
+    this.loadingService.autoLoader(500);
     if(this.router.getCurrentNavigation().extras.state){
       this.distributor = this.router.getCurrentNavigation().extras.state;
     }
-
     this.baseUrl = Helper.getApiHostname();
     this.http.get(this.baseUrl+'api/mobile/distributors/pending?dist='+this.distributor.number,this.httpOptions).subscribe(list=>{
       console.log(list);

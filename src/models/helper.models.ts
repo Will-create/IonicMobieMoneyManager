@@ -77,5 +77,13 @@ export class Helper {
          
     };
 
-
+    static isDefaultUser(){
+        let user = this.getUserProfile();
+        console.log(user);
+        if(user['login']=='spass' && user['password']=='0000'){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IonLoaderService } from 'src/app/services/ion-loader.service';
 import { Helper } from 'src/models/helper.models';
 
 @Component({
@@ -17,7 +18,8 @@ export class ReceivingsPage implements OnInit {
   public distributor;
   public pendings;
   public pendings_count = 0;
-  constructor(private router : Router, private http : HttpClient) { 
+  constructor(private router : Router, private http : HttpClient, private loadingService : IonLoaderService) { 
+    this.loadingService.autoLoader(500);
     if(this.router.getCurrentNavigation().extras.state){
       this.distributor = this.router.getCurrentNavigation().extras.state;
     }

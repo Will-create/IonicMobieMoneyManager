@@ -289,7 +289,12 @@ ion-header {
         }
     }
 }
-
+.customLoader {
+    --background: #df6706;
+    --spinner-color: #fff;
+  
+    color: #fff;
+  }
 ion-modal {
     --background: rgba(0, 0, 1, 0.267) !important;
 }

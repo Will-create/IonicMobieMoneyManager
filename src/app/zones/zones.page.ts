@@ -3,6 +3,7 @@ import { NavigationExtras,Router } from '@angular/router';
 //import {ZoneCrudService} from '../services/zone-crud.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Helper } from 'src/models/helper.models';
+import { IonLoaderService } from '../services/ion-loader.service';
 @Component({
   selector: 'app-zones',
   templateUrl: './zones.page.html',
@@ -16,10 +17,10 @@ export class ZonesPage implements OnInit {
   public zones: any = [];
   public zones_count : number = 0;
   public searchTerm : string;
-  constructor(private router: Router, private http: HttpClient) {
+  constructor(private router: Router, private http: HttpClient,private loadingService : IonLoaderService) {
 
     this.baseUrl = Helper.getApiHostname();
-
+    this.loadingService.autoLoader();
     this.http.get(this.baseUrl + 'api/mobile/zones/list', this.httOptions).subscribe(list => {
       console.log(list);
       if(list['items']){

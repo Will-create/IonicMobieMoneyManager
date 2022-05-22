@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ExtraOptions, NavigationExtras, Router } from '@angular/router';
 import { Helper } from 'src/models/helper.models';
+import { IonLoaderService } from '../services/ion-loader.service';
 
 @Component({
   selector: 'app-stats',
@@ -16,8 +17,9 @@ export class StatsPage implements OnInit {
   public numbers : any = [];
   public numbers_count : number = 0;
   private baseUrl : string;
-  constructor(private router : Router, private http : HttpClient) { 
+  constructor(private router : Router, private http : HttpClient,private loadingService : IonLoaderService) { 
     this.baseUrl = Helper.getApiHostname();
+    this.loadingService.autoLoader(4000);
     this.http.get(this.baseUrl+'api/mobile/numbers/list/',this.httpOptions).subscribe(list=>{
       if(list['count'] > 0){
         this.numbers = list['items'];
@@ -25,7 +27,6 @@ export class StatsPage implements OnInit {
       }
     });
   }
-
   ngOnInit() {
   }
   details(number : any){
