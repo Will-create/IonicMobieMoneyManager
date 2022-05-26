@@ -53,7 +53,28 @@ export class Helper {
             user = Constants.DEFAULT_USER_PROFILE;
         return JSON.parse(user);
     }
-
+     // Set CURRENT PHONE SIM NUMBER
+     static setCurrentSim(number){
+        window.localStorage.setItem(Constants.CURRENT_SIM_NUMBER_KEY,number);
+    }
+    // GET CURRENT PHONE SIM NUMBER
+    static getCurrentSim(){
+        var number = window.localStorage.getItem(Constants.CURRENT_SIM_NUMBER_KEY);
+        if(!number)
+            number = Constants.DEFAULT_CURRENT_SIM;
+        return number;
+    }
+    // Set SAVED PROFILE LOGIN
+    static setSavedProfileLogin(login){
+        window.localStorage.setItem(Constants.SAVED_USER_PROFILE_KEY,login);
+    }
+    // GET SEVED PROFILE LOGIN
+    static getSavedProfileLogin(){
+        var number = window.localStorage.getItem(Constants.SAVED_USER_PROFILE_KEY);
+        if(!number)
+            number = Constants.DEFAULT_SAVED_USER_PROFILE;
+        return number;
+    }
     // SET DIAL MODE 
     static setDialMode(mode){
         window.localStorage.setItem(Constants.DIAL_MODE_KEY,mode);

@@ -18,12 +18,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'transactions',
+        path: 'distributors',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../transactions/transactions.module').then(m => m.TransactionsPageModule)
+              import('../distributors/listing/listing.module').then(m => m.ListingPageModule)
           }
         ]
       },

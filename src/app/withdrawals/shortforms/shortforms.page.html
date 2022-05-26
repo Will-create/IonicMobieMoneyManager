@@ -17,7 +17,7 @@
 			<ion-item class="animate__animated animate__fadeInUp" lines="none">
 				<ion-select mode="md" formControlName="distributor_number" interface="action-sheet">
 						<ion-select-option disabled value="">Numero distributeur</ion-select-option>
-					<ion-select-option *ngFor="let distributor of distributors" value="{{distributor.number}}">
+					<ion-select-option *ngFor="let distributor of distributors" value="{{distributor.number}}" >
            {{distributor.number}} | Solde : {{distributor.balance}} FCFA
           	</ion-select-option>
 				</ion-select>

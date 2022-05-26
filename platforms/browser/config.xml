@@ -3,7 +3,7 @@
     <name>S.PASS TELECOM</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.43.79:8100" />
+    <content original-src="index.html" src="http://localhost:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -14,7 +14,6 @@
     <allow-navigation href="http://192.168.0.171:8100" sessionid="4461d63a" />
     <allow-navigation href="http://192.168.100.101:8100" sessionid="eab93ed7" />
     <allow-navigation href="http://localhost:8100" sessionid="581f686b" />
-    <allow-navigation href="http://192.168.43.79:8100" sessionid="302a6161" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="android-targetSdkVersion" value="30" />

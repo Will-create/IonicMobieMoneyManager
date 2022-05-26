@@ -1,0 +1,23 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+		</ion-buttons>
+		<ion-title>Numeros distributeurs</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg_color">
+	<ion-list lines="none">
+		<ion-item class="animate__animated animate__fadeInUp" *ngFor="let distributor of distributors" (click)="dist(distributor)">
+			<div class="icon_box" slot="start">
+				<ion-icon name="call-outline"></ion-icon>
+			</div>
+			<div class="text_box">
+				<h2>{{distributor.number}} ({{distributor.balance}}F)</h2>
+			</div>
+		</ion-item>
+  
+		
+	</ion-list>
+</ion-content>

@@ -23,26 +23,31 @@ export class ShortformsPage implements OnInit {
   private dialmode : string;
   constructor( private formBuilder : FormBuilder, private toastCtrl : ToastController,private router : Router,private http: HttpClient) { 
     // load base url
-    this.baseUrl = Helper.getApiHostname();
-    this.shortCode = Helper.getUssdShortcode();
-    this.dialmode = Helper.getDialMode();
+    
     if(this.router.getCurrentNavigation().extras.state){
       this.agent = this.router.getCurrentNavigation().extras.state.number;
     };
-    this.http.get(this.baseUrl+'api/mobile/distributors/list/', this.httpOptions).subscribe(list=>{
-      if(list['count'] > 0){
-        this.distributors = list['items'];
-      }
-    });
+    
+  }
+
+  ngOnInit() {
+    this.baseUrl = Helper.getApiHostname();
+    this.shortCode = Helper.getUssdShortcode();
+    this.dialmode = Helper.getDialMode();
+
     this.depositForm =  this.formBuilder.group({
-      distributor_number : '',
+      distributor_number : Helper.getCurrentSim(),
       agent_number : this.agent.number,
       passcode : '',
       amount : '',
     });
-  }
-
-  ngOnInit() {
+    this.http.get(this.baseUrl+'api/mobile/distributors/list/', this.httpOptions).subscribe(list=>{
+      if(list['count'] > 0){
+        this.distributors = list['items'];
+      }
+      
+    });
+    
   }
   send(){
     let form = {};

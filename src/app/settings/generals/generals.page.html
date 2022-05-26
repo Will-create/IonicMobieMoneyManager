@@ -12,6 +12,14 @@
 			<ion-item class="animate__animated animate__fadeInUp" lines="none">
 				<ion-input type="text" formControlName="shortcode" placeholder="Code de transfert USSD"></ion-input>
 			</ion-item>
+			<ion-item class="animate__animated animate__fadeInUp" lines="none">
+				<ion-select mode="md" formControlName="current_sim" interface="action-sheet">
+						<ion-select-option disabled value="">Numero distributeur</ion-select-option>
+					<ion-select-option *ngFor="let distributor of distributors" value="{{distributor.number}}">
+           {{distributor.number}} | Solde : {{distributor.balance}} FCFA
+          	</ion-select-option>
+				</ion-select>
+			</ion-item>
 		
 		</ion-list>
 	</form>

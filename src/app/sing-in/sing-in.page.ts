@@ -13,11 +13,13 @@ export class SingInPage implements OnInit {
   private currentUser? : any;
   public loginForm : any;
   public isDefaultUser : boolean;
+  private saved_login : string;
   constructor(private navCtrl: NavController, private route: Router,public formBuilder : FormBuilder,private toastCtrl : ToastController) { 
     this.currentUser = Helper.getUserProfile();
     this.isDefaultUser = Helper.isDefaultUser();
+    this.saved_login = Helper.getSavedProfileLogin();
     this.loginForm = this.formBuilder.group({
-      login : '',
+      login : this.saved_login,
       password : ''
     })
   }
@@ -46,6 +48,7 @@ export class SingInPage implements OnInit {
     }else{
       if(form['login']== this.currentUser.login && form['password']==this.currentUser.password){
       this.presentToast('Bienvenue');
+      Helper.setSavedProfileLogin(form['login']);
       this.navCtrl.navigateRoot(['./tabs']);
       
     }else{
