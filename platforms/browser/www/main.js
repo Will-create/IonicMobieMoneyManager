@@ -873,9 +873,13 @@ Constants.DEFAULT_API_HOSTNAME = "http://vps85136.serveur-vps.net:8050/";
 Constants.DEFAULT_USSD_SHORTCODE = "*144*4*1*numero*montant#";
 Constants.API_HOSTNAME_KEY = "api_hostname";
 Constants.USSD_SHORTCODE_KEY = "ussd_shortcode";
+Constants.CURRENT_SIM_NUMBER_KEY = "current_sim";
 Constants.USER_PROFILE_KEY = "user_profile_key";
+Constants.SAVED_USER_PROFILE_KEY = "saved_user_profile_key";
 Constants.DEFAULT_USER_PROFILE = '{ "name": "SPASS TELECOM", "picture": "assets/imgs/logo.png", "login" : "spass" ,"logged" : false ,"password" : "0000","phone" : "+226 76 67 88 68"}';
 Constants.DEFAULT_DIAL_MODE = 'select';
+Constants.DEFAULT_CURRENT_SIM = '66748654';
+Constants.DEFAULT_SAVED_USER_PROFILE = 'spass';
 Constants.DIAL_MODE_KEY = 'dial_mode';
 
 

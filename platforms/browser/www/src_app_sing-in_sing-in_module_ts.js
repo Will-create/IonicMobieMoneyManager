@@ -118,8 +118,9 @@ let SingInPage = class SingInPage {
         this.toastCtrl = toastCtrl;
         this.currentUser = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getUserProfile();
         this.isDefaultUser = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.isDefaultUser();
+        this.saved_login = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getSavedProfileLogin();
         this.loginForm = this.formBuilder.group({
-            login: '',
+            login: this.saved_login,
             password: ''
         });
     }
@@ -141,11 +142,20 @@ let SingInPage = class SingInPage {
                 this.presentToast('Bienvenue');
                 this.navCtrl.navigateRoot(['./tabs']);
             }
+            else {
+                this.presentToast('Nom d\'utilisateur ou numero de telephone incorrect ');
+            }
         }
         else {
-            this.presentToast('Login failled');
+            if (form['login'] == this.currentUser.login && form['password'] == this.currentUser.password) {
+                this.presentToast('Bienvenue');
+                src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.setSavedProfileLogin(form['login']);
+                this.navCtrl.navigateRoot(['./tabs']);
+            }
+            else {
+                this.presentToast('Nom d\'utilisateur ou numero de telephone incorrect');
+            }
         }
-        console.log(form);
     }
     sign_up() {
         this.route.navigate(['./sign-up']);
@@ -184,7 +194,7 @@ SingInPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
   \******************************************************/
 /***/ ((module) => {
 
-module.exports = "ion-header ion-toolbar ion-title {\n  font-size: 1.15rem;\n  font-weight: 400;\n}\n\n.banner {\n  background: var(--primary);\n  height: 160px;\n  display: flex;\n  align-items: flex-start;\n}\n\n.banner h2 {\n  margin: 0;\n  color: var(--white);\n  align-self: center;\n  width: 100%;\n  font-size: 1.6rem;\n  font-weight: 500;\n}\n\n.banner h2 span {\n  font-weight: 400;\n}\n\n.form {\n  margin-top: 30px;\n}\n\n.form ion-list {\n  padding-bottom: 8px;\n}\n\n.form ion-list ion-item:last-of-type {\n  margin-bottom: 16px !important;\n}\n\n.form h2 {\n  margin: 0;\n  color: var(--text-light);\n  font-size: 0.95rem;\n  margin-bottom: 30px;\n}\n\n.thumb_impression {\n  padding-top: 40px;\n  width: calc(100% - 64px);\n  margin: 0 auto;\n}\n\n.thumb_impression h2 {\n  color: var(--text-dark);\n  margin: 0;\n  font-size: 0.95rem;\n  margin-bottom: 30px;\n}\n\n.thumb_impression .fingerprint {\n  width: 47px;\n  margin: 0 auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNpbmctaW4ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Msa0JBQUE7RUFDQSxnQkFBQTtBQUNEOztBQUVBO0VBQ0MsMEJBQUE7RUFDQSxhQUFBO0VBQ0EsYUFBQTtFQUNBLHVCQUFBO0FBQ0Q7O0FBQ0M7RUFDQyxTQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtFQUNBLFdBQUE7RUFDQSxpQkFBQTtFQUNBLGdCQUFBO0FBQ0Y7O0FBQ0U7RUFDQyxnQkFBQTtBQUNIOztBQUlBO0VBQ0MsZ0JBQUE7QUFERDs7QUFHQztFQUNDLG1CQUFBO0FBREY7O0FBR1k7RUFDSSw4QkFBQTtBQURoQjs7QUFNQztFQUNDLFNBQUE7RUFDQSx3QkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7QUFKRjs7QUFTQTtFQUNDLGlCQUFBO0VBQ0Esd0JBQUE7RUFDQSxjQUFBO0FBTkQ7O0FBUUM7RUFDQyx1QkFBQTtFQUNBLFNBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0FBTkY7O0FBU0M7RUFDQyxXQUFBO0VBQ0EsY0FBQTtBQVBGIiwiZmlsZSI6InNpbmctaW4ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWhlYWRlciBpb24tdG9vbGJhciBpb24tdGl0bGUge1xuXHRmb250LXNpemU6IDEuMTVyZW07XG5cdGZvbnQtd2VpZ2h0OiA0MDA7XG59XG5cbi5iYW5uZXIge1xuXHRiYWNrZ3JvdW5kOiB2YXIoLS1wcmltYXJ5KTtcblx0aGVpZ2h0OiAxNjBweDtcblx0ZGlzcGxheTogZmxleDtcblx0YWxpZ24taXRlbXM6IGZsZXgtc3RhcnQ7XG5cblx0aDIge1xuXHRcdG1hcmdpbjogMDtcblx0XHRjb2xvcjogdmFyKC0td2hpdGUpO1xuXHRcdGFsaWduLXNlbGY6IGNlbnRlcjtcblx0XHR3aWR0aDogMTAwJTtcblx0XHRmb250LXNpemU6IDEuNnJlbTtcblx0XHRmb250LXdlaWdodDogNTAwO1xuXG5cdFx0c3BhbiB7XG5cdFx0XHRmb250LXdlaWdodDogNDAwO1xuXHRcdH1cblx0fVxufVxuXG4uZm9ybSB7XG5cdG1hcmdpbi10b3A6IDMwcHg7XG5cblx0aW9uLWxpc3Qge1xuXHRcdHBhZGRpbmctYm90dG9tOiA4cHg7XG4gICAgICAgIGlvbi1pdGVte1xuICAgICAgICAgICAgJjpsYXN0LW9mLXR5cGV7XG4gICAgICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTZweCAhaW1wb3J0YW50O1xuICAgICAgICAgICAgfVxuICAgICAgICB9XG5cdH1cblxuXHRoMiB7XG5cdFx0bWFyZ2luOiAwO1xuXHRcdGNvbG9yOiB2YXIoLS10ZXh0LWxpZ2h0KTtcblx0XHRmb250LXNpemU6IC45NXJlbTtcblx0XHRtYXJnaW4tYm90dG9tOiAzMHB4O1xuXHR9XG5cbn1cblxuLnRodW1iX2ltcHJlc3Npb24ge1xuXHRwYWRkaW5nLXRvcDogNDBweDtcblx0d2lkdGg6IGNhbGMoMTAwJSAtIDY0cHgpO1xuXHRtYXJnaW46IDAgYXV0bztcblxuXHRoMiB7XG5cdFx0Y29sb3I6IHZhcigtLXRleHQtZGFyayk7XG5cdFx0bWFyZ2luOiAwO1xuXHRcdGZvbnQtc2l6ZTogLjk1cmVtO1xuXHRcdG1hcmdpbi1ib3R0b206IDMwcHg7XG5cdH1cblxuXHQuZmluZ2VycHJpbnQge1xuXHRcdHdpZHRoOiA0N3B4O1xuXHRcdG1hcmdpbjogMCBhdXRvO1xuXHR9XG5cbn0iXX0= */";
+module.exports = "ion-header ion-toolbar ion-title {\n  font-size: 1.15rem;\n  font-weight: 400;\n}\n\n.banner {\n  background: var(--primary);\n  height: 160px;\n  display: flex;\n  align-items: flex-start;\n}\n\n.banner h2 {\n  margin: 0;\n  color: var(--white);\n  align-self: center;\n  width: 100%;\n  font-size: 1.6rem;\n  font-weight: 500;\n}\n\n.banner h2 span {\n  font-weight: 400;\n}\n\n.form {\n  margin-top: 200px;\n}\n\n.form ion-list {\n  padding-bottom: 8px;\n}\n\n.form ion-list ion-item:last-of-type {\n  margin-bottom: 16px !important;\n}\n\n.form h2 {\n  margin: 0;\n  color: var(--text-light);\n  font-size: 0.95rem;\n  margin-bottom: 30px;\n}\n\n.thumb_impression {\n  padding-top: 40px;\n  width: calc(100% - 64px);\n  margin: 0 auto;\n}\n\n.thumb_impression h2 {\n  color: var(--text-dark);\n  margin: 0;\n  font-size: 0.95rem;\n  margin-bottom: 30px;\n}\n\n.thumb_impression .fingerprint {\n  width: 47px;\n  margin: 0 auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNpbmctaW4ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Msa0JBQUE7RUFDQSxnQkFBQTtBQUNEOztBQUVBO0VBQ0MsMEJBQUE7RUFDQSxhQUFBO0VBQ0EsYUFBQTtFQUNBLHVCQUFBO0FBQ0Q7O0FBQ0M7RUFDQyxTQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtFQUNBLFdBQUE7RUFDQSxpQkFBQTtFQUNBLGdCQUFBO0FBQ0Y7O0FBQ0U7RUFDQyxnQkFBQTtBQUNIOztBQUlBO0VBQ0MsaUJBQUE7QUFERDs7QUFHQztFQUNDLG1CQUFBO0FBREY7O0FBR1k7RUFDSSw4QkFBQTtBQURoQjs7QUFNQztFQUNDLFNBQUE7RUFDQSx3QkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7QUFKRjs7QUFTQTtFQUNDLGlCQUFBO0VBQ0Esd0JBQUE7RUFDQSxjQUFBO0FBTkQ7O0FBUUM7RUFDQyx1QkFBQTtFQUNBLFNBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0FBTkY7O0FBU0M7RUFDQyxXQUFBO0VBQ0EsY0FBQTtBQVBGIiwiZmlsZSI6InNpbmctaW4ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWhlYWRlciBpb24tdG9vbGJhciBpb24tdGl0bGUge1xuXHRmb250LXNpemU6IDEuMTVyZW07XG5cdGZvbnQtd2VpZ2h0OiA0MDA7XG59XG5cbi5iYW5uZXIge1xuXHRiYWNrZ3JvdW5kOiB2YXIoLS1wcmltYXJ5KTtcblx0aGVpZ2h0OiAxNjBweDtcblx0ZGlzcGxheTogZmxleDtcblx0YWxpZ24taXRlbXM6IGZsZXgtc3RhcnQ7XG5cblx0aDIge1xuXHRcdG1hcmdpbjogMDtcblx0XHRjb2xvcjogdmFyKC0td2hpdGUpO1xuXHRcdGFsaWduLXNlbGY6IGNlbnRlcjtcblx0XHR3aWR0aDogMTAwJTtcblx0XHRmb250LXNpemU6IDEuNnJlbTtcblx0XHRmb250LXdlaWdodDogNTAwO1xuXG5cdFx0c3BhbiB7XG5cdFx0XHRmb250LXdlaWdodDogNDAwO1xuXHRcdH1cblx0fVxufVxuXG4uZm9ybSB7XG5cdG1hcmdpbi10b3A6IDIwMHB4O1xuXG5cdGlvbi1saXN0IHtcblx0XHRwYWRkaW5nLWJvdHRvbTogOHB4O1xuICAgICAgICBpb24taXRlbXtcbiAgICAgICAgICAgICY6bGFzdC1vZi10eXBle1xuICAgICAgICAgICAgICAgIG1hcmdpbi1ib3R0b206IDE2cHggIWltcG9ydGFudDtcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuXHR9XG5cblx0aDIge1xuXHRcdG1hcmdpbjogMDtcblx0XHRjb2xvcjogdmFyKC0tdGV4dC1saWdodCk7XG5cdFx0Zm9udC1zaXplOiAuOTVyZW07XG5cdFx0bWFyZ2luLWJvdHRvbTogMzBweDtcblx0fVxuXG59XG5cbi50aHVtYl9pbXByZXNzaW9uIHtcblx0cGFkZGluZy10b3A6IDQwcHg7XG5cdHdpZHRoOiBjYWxjKDEwMCUgLSA2NHB4KTtcblx0bWFyZ2luOiAwIGF1dG87XG5cblx0aDIge1xuXHRcdGNvbG9yOiB2YXIoLS10ZXh0LWRhcmspO1xuXHRcdG1hcmdpbjogMDtcblx0XHRmb250LXNpemU6IC45NXJlbTtcblx0XHRtYXJnaW4tYm90dG9tOiAzMHB4O1xuXHR9XG5cblx0LmZpbmdlcnByaW50IHtcblx0XHR3aWR0aDogNDdweDtcblx0XHRtYXJnaW46IDAgYXV0bztcblx0fVxuXG59Il19 */";
 
 /***/ }),
 
@@ -194,7 +204,7 @@ module.exports = "ion-header ion-toolbar ion-title {\n  font-size: 1.15rem;\n  f
   \******************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n    <ion-toolbar>\n        <ion-title>\n           \n        </ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content fullscreen class=\"bg_color\">\n    <div class=\"banner\">\n        <h2 class=\"ion-text-center animate__animated animate__zoomIn\">\n                 \n            <span>OM MANAGER</span> <br>\n        </h2>\n    </div>\n    <form [formGroup]=\"loginForm\" class=\"form\">\n        <ion-list lines=\"none\">\n            <ion-item class=\"animate__animated animate__fadeInUp\">\n                <ion-input formControlName=\"login\"  type=\"text\" placeholder=\"Nom d'utilisateur ou Numero\"></ion-input>\n            </ion-item>\n            <ion-item class=\"animate__animated animate__fadeInUp\">\n                <ion-input formControlName=\"password\" type=\"text\" placeholder=\"Mot de passe\"></ion-input>\n            </ion-item>\n            <ion-button size=\"large\" shape=\"block animate__animated animate__fadeInUp\" class=\"btn\" (click)=\"tabs()\">Connexion</ion-button>\n        </ion-list>\n    </form>\n</ion-content>\n";
+module.exports = "\n<ion-content fullscreen>\n    <div style=\"background-color: #fff;\" class=\"banner\">\n       <div style=\"width: 100%;height:320px;padding:0 20px 0 20px;\">\n           <img style=\"width: 100%;height:100%\" src=\"assets/imgs/logo.png\">\n       </div>\n    </div>\n    <form [formGroup]=\"loginForm\" class=\"form\">\n        <ion-list lines=\"none\">\n            <ion-item class=\"animate__animated animate__fadeInUp\">\n                <ion-input formControlName=\"login\"  type=\"text\" placeholder=\"Nom d'utilisateur ou Numero\"></ion-input>\n            </ion-item>\n            <ion-item class=\"animate__animated animate__fadeInUp\">\n                <ion-input autofocus=\"true\" formControlName=\"password\" type=\"text\" placeholder=\"Mot de passe\"></ion-input>\n            </ion-item>\n            <ion-button size=\"large\" shape=\"block animate__animated animate__fadeInUp\" class=\"btn\" (click)=\"tabs()\">Connexion</ion-button>\n        </ion-list>\n    </form>\n</ion-content>\n";
 
 /***/ })
 

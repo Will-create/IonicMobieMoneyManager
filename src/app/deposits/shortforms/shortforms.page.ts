@@ -18,7 +18,7 @@ export class ShortformsPage implements OnInit {
   public depositForm ;
   private baseUrl : string ;
   private shortCode : string ;
-  public distributors ;
+  public distributors = [] ;
   public agent;
   private dialmode : string;
   constructor( private formBuilder : FormBuilder, private toastCtrl : ToastController,private router : Router,private http: HttpClient) { 
@@ -43,7 +43,12 @@ export class ShortformsPage implements OnInit {
     });
     this.http.get(this.baseUrl+'api/mobile/distributors/list/', this.httpOptions).subscribe(list=>{
       if(list['count'] > 0){
-        this.distributors = list['items'];
+        var current = Helper.getCurrentSim();
+        list['items'].forEach(element => {
+          if(element.number == current){
+            this.distributors.push(element);
+          }
+        });
       }
       
     });

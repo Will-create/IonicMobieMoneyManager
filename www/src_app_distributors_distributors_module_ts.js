@@ -35,6 +35,10 @@ const routes = [
     {
         path: 'pending',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_distributors_pending_pending_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pending/pending.module */ 18851)).then(m => m.PendingPageModule)
+    },
+    {
+        path: 'listing',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_distributors_listing_listing_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./listing/listing.module */ 18574)).then(m => m.ListingPageModule)
     }
 ];
 let DistributorsPageRoutingModule = class DistributorsPageRoutingModule {

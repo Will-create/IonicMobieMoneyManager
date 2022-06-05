@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { Helper } from 'src/models/helper.models';
-import { IonLoaderService } from '../services/ion-loader.service';
 
 @Component({
   selector: 'app-localites',
@@ -17,9 +16,8 @@ export class LocalitesPage implements OnInit {
   public searchTerm : string ;
   public localites : any = [];
   public localite_count : number = 0;
-  constructor(private router : Router,private http :HttpClient, private loadingService : IonLoaderService) {
+  constructor(private router : Router,private http :HttpClient) {
     this.baseUrl = Helper.getApiHostname();
-    this.loadingService.autoLoader(1000);
     this.http.get(this.baseUrl+'api/mobile/localites/list/',this.httpOptions).subscribe(list=>{
       if(list['count']>0){
         this.localites = list['items'];

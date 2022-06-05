@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { IonLoaderService } from 'src/app/services/ion-loader.service';
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
@@ -9,9 +8,8 @@ import { IonLoaderService } from 'src/app/services/ion-loader.service';
 export class DetailsPage implements OnInit {
   public contact : any = {};
   public numbers :any = [];
-  constructor(private router : Router,public loadingService : IonLoaderService) { 
+  constructor(private router : Router) { 
     if(this.router.getCurrentNavigation().extras.state){
-      this.loadingService.autoLoader();
       let state = this.router.getCurrentNavigation().extras.state;
       this.contact = state.contact;
       this.numbers = state.numbers;

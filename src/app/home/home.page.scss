@@ -21,7 +21,6 @@ ion-header {
             overflow: hidden;
             overflow-x: scroll;
             -ms-overflow-style: none;
-            scrollbar-width: none;
             &::-webkit-scrollbar {
                 display: none;
             }
@@ -97,8 +96,6 @@ ion-header {
                     font-weight: 700;
                     margin: 0;
                     color: var(--primary);
-
-
                     position: relative;
                     z-index: 99;
                 }
@@ -199,7 +196,7 @@ ion-list {
         position: relative;
         margin-bottom: 8px;
         --background: var(--transparent);
-        background: url('../../assets/imgs/banner_bg.png');
+        //background: url('../../assets/imgs/banner_bg.png');
         --inner-padding-end: 0px;
         --inner-min-height: unset !important;
         --padding-start: 0;

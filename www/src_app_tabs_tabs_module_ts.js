@@ -34,11 +34,11 @@ const routes = [
                 ]
             },
             {
-                path: 'transactions',
+                path: 'distributors',
                 children: [
                     {
                         path: '',
-                        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_transactions_transactions_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../transactions/transactions.module */ 65528)).then(m => m.TransactionsPageModule)
+                        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_distributors_listing_listing_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../distributors/listing/listing.module */ 18574)).then(m => m.ListingPageModule)
                     }
                 ]
             },
@@ -199,7 +199,7 @@ module.exports = "ion-tab-bar {\n  --background: #df6706 !important;\n  --animat
   \************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-tabs>\n\t<ion-tab-bar class=\"animate__animated animate__fadeInUp\" slot=\"bottom\">\n\t\t<ion-tab-button tab=\"home\">\n\t\t\t<ion-icon name=\"home-outline\"></ion-icon>\n\t\t\t<ion-label>Accueil</ion-label>\n\t\t</ion-tab-button>\n\t\t<ion-tab-button tab=\"contacts\">\n\t\t\t<ion-icon name=\"people-outline\"></ion-icon>\n\t\t\t<ion-label>Contacts</ion-label>\n\t\t</ion-tab-button>\n\t\t<ion-tab-button tab=\"agents\">\n\t\t\t<ion-icon name=\"radio-outline\"></ion-icon>\n\t\t\t<ion-label>Agents</ion-label>\n\t\t</ion-tab-button>\n\t\t<ion-tab-button tab=\"settings\">\n\t\t\t\t<ion-icon name=\"cog-outline\"></ion-icon>\n\t\t\t\t<ion-label>Parametres</ion-label>\n\t\t</ion-tab-button>\n\t</ion-tab-bar>\n</ion-tabs>";
+module.exports = "<ion-tabs>\n\t<ion-tab-bar class=\"animate__animated animate__fadeInUp\" slot=\"bottom\">\n\t\t<ion-tab-button tab=\"home\">\n\t\t\t<ion-icon name=\"home-outline\"></ion-icon>\n\t\t\t<ion-label>Accueil</ion-label>\n\t\t</ion-tab-button>\n\t\t<ion-tab-button tab=\"distributors\">\n\t\t\t<ion-icon name=\"call-outline\"></ion-icon>\n\t\t\t<ion-label>Distributeurs</ion-label>\n\t\t</ion-tab-button>\n\t\t<ion-tab-button tab=\"contacts\">\n\t\t\t<ion-icon name=\"people-outline\"></ion-icon>\n\t\t\t<ion-label>Contacts</ion-label>\n\t\t</ion-tab-button>\n\t\t<ion-tab-button tab=\"agents\">\n\t\t\t<ion-icon name=\"radio-outline\"></ion-icon>\n\t\t\t<ion-label>Agents</ion-label>\n\t\t</ion-tab-button>\n\t\t<ion-tab-button tab=\"settings\">\n\t\t\t\t<ion-icon name=\"cog-outline\"></ion-icon>\n\t\t\t\t<ion-label>Parametres</ion-label>\n\t\t</ion-tab-button>\n\t</ion-tab-bar>\n</ion-tabs>";
 
 /***/ })
 

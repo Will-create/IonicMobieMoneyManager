@@ -114,6 +114,7 @@ __webpack_require__.r(__webpack_exports__);
 
 let ShortformsPage = class ShortformsPage {
     constructor(formBuilder, toastCtrl, router, http) {
+        // load base url
         this.formBuilder = formBuilder;
         this.toastCtrl = toastCtrl;
         this.router = router;
@@ -121,26 +122,25 @@ let ShortformsPage = class ShortformsPage {
         this.httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpHeaders({ 'Content-Type': 'application/json' })
         };
-        // load base url
-        this.currentUser = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getUserProfile();
-        this.baseUrl = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getApiHostname();
         if (this.router.getCurrentNavigation().extras.state) {
             this.previous = this.router.getCurrentNavigation().extras.state.number;
             this.agent = this.router.getCurrentNavigation().extras.state.number;
         }
+    }
+    ngOnInit() {
+        this.currentUser = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getUserProfile();
+        this.baseUrl = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getApiHostname();
+        this.shortCode = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getUssdShortcode();
+        this.depositForm = this.formBuilder.group({
+            distributor_number: src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getCurrentSim(),
+            agent_number: this.previous.number,
+            sms: '',
+        });
         this.http.get(this.baseUrl + 'api/mobile/distributors/list/', this.httpOptions).subscribe(list => {
             if (list['count'] > 0) {
                 this.distributors = list['items'];
             }
         });
-        this.shortCode = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getUssdShortcode();
-        this.depositForm = this.formBuilder.group({
-            distributor_number: '',
-            agent_number: this.previous.number,
-            sms: '',
-        });
-    }
-    ngOnInit() {
     }
     send() {
         let form = {};
@@ -243,7 +243,7 @@ module.exports = "ion-header ion-toolbar ion-title h2 {\n  font-size: 1.1rem;\n 
   \************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\">\n\t\t\t<ion-back-button text=\"\" icon=\"chevron-back-outline\"></ion-back-button>\n\t\t</ion-buttons>\n\t\t<ion-title>\n\t\t\t<h2>\n\t\t\t\tReception du numero {{ agent.number}}\n\t\t\t\t<small>Envoyer du virtuel</small>\n\t\t\t</h2>\n\t\t</ion-title>\n\t</ion-toolbar>\n</ion-header>\n<ion-content fullscreen>\n  <form class=\"form\" [formGroup]=\"depositForm\" (ngSubmit)=\"send()\">\n\t\t<ion-list lines=\"none\">\n\t\t\t<ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n\t\t\t\t<ion-select mode=\"md\" formControlName=\"distributor_number\" interface=\"action-sheet\">\n\t\t\t\t\t\t<ion-select-option disabled value=\"\">Numero distributeur</ion-select-option>\n\t\t\t\t\t<ion-select-option *ngFor=\"let distributor of distributors\" value=\"{{distributor.number}}\">\n           {{distributor.number}} | Solde : {{distributor.balance}} FCFA\n          \t</ion-select-option>\n\t\t\t\t</ion-select>\n\t\t\t</ion-item>\n\t\t\t<ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n\t\t\t\t<ion-textarea rows=\"5\" formControlName=\"sms\" placeholder=\"Coller le sms de transfert que vous avez recu ici\"></ion-textarea>\n\t\t\t</ion-item>\n\t\t</ion-list>\n\t</form>\n\t<ion-footer class=\"ion-no-border animate__animated animate__fadeInUp\">\n\t\t<ion-button size=\"small\" (click)=\"send()\" shape=\"block\" class=\"btn\" >Envoyer</ion-button>\n\t  </ion-footer>\n</ion-content>\n";
+module.exports = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\">\n\t\t\t<ion-back-button text=\"\" icon=\"chevron-back-outline\"></ion-back-button>\n\t\t</ion-buttons>\n\t\t<ion-title>\n\t\t\t<h2>\n\t\t\t\tReception du numero {{ agent.number}}\n\t\t\t\t<small>Envoyer du virtuel</small>\n\t\t\t</h2>\n\t\t</ion-title>\n\t</ion-toolbar>\n</ion-header>\n<ion-content fullscreen>\n  <form class=\"form\" [formGroup]=\"depositForm\" (ngSubmit)=\"send()\">\n\t\t<ion-list lines=\"none\">\n\t\t\t<ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n\t\t\t\t<ion-select mode=\"md\" formControlName=\"distributor_number\" interface=\"action-sheet\">\n\t\t\t\t\t\t<ion-select-option disabled value=\"\">Numero distributeur</ion-select-option>\n\t\t\t\t\t<ion-select-option *ngFor=\"let distributor of distributors\" value=\"{{distributor.number}}\" >\n           {{distributor.number}} | Solde : {{distributor.balance}} FCFA\n          \t</ion-select-option>\n\t\t\t\t</ion-select>\n\t\t\t</ion-item>\n\t\t\t<ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n\t\t\t\t<ion-textarea rows=\"5\" formControlName=\"sms\" placeholder=\"Coller le sms de transfert que vous avez recu ici\"></ion-textarea>\n\t\t\t</ion-item>\n\t\t</ion-list>\n\t</form>\n\t<ion-footer class=\"ion-no-border animate__animated animate__fadeInUp\">\n\t\t<ion-button size=\"small\" (click)=\"send()\" shape=\"block\" class=\"btn\" >Envoyer</ion-button>\n\t  </ion-footer>\n</ion-content>\n";
 
 /***/ })
 

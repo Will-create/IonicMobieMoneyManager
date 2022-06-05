@@ -125,6 +125,34 @@ let ProfilePage = class ProfilePage {
         form['login'] = this.profileForm.get('login').value;
         form['password'] = this.profileForm.get('password').value;
         form['phone'] = this.profileForm.get('phone').value;
+        if (!form['name']) {
+            this.presentToast("Le nom d'utilisateur est obligatoire", "bottom", 600);
+            return;
+        }
+        if (!form['login']) {
+            this.presentToast("Le nom de connection est obligatoire", "bottom", 600);
+            return;
+        }
+        if (!form['password']) {
+            this.presentToast("Le mot de passe est obligatoire", "bottom", 600);
+            return;
+        }
+        if (form['password'].length < 4) {
+            this.presentToast("Le mot de passe doit avoir au moins 4 caracteres", "bottom", 800);
+            return;
+        }
+        if (!form['phone']) {
+            this.presentToast("Le numero de telephone est obligatoire est obligatoire", "bottom", 600);
+            return;
+        }
+        if (form['login'] == 'spass') {
+            this.presentToast("Le nom de connexion doit etre different de spass", "bottom", 1000);
+            return;
+        }
+        if (form['password'] == '0000') {
+            this.presentToast("Le mot de passe doit etre different de 0000", "bottom", 1000);
+            return;
+        }
         src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.setUserProfile(JSON.stringify(form));
         this.presentToast("Enregistre avec succes", "bottom", 600);
         this.router.navigate(['/tabs/settings']);

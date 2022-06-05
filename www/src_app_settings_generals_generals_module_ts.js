@@ -94,13 +94,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "GeneralsPage": () => (/* binding */ GeneralsPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _generals_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./generals.page.html?ngResource */ 45590);
 /* harmony import */ var _generals_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./generals.page.scss?ngResource */ 14316);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 90587);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 52816);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ 28784);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 90587);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 52816);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
 /* harmony import */ var src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/models/helper.models */ 71220);
 
 
@@ -110,23 +111,36 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 let GeneralsPage = class GeneralsPage {
-    constructor(formBuilder, toastCtrl, router) {
+    constructor(formBuilder, toastCtrl, router, http) {
         this.formBuilder = formBuilder;
         this.toastCtrl = toastCtrl;
         this.router = router;
-        this.generalForm = this.formBuilder.group({
-            shortcode: src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getUssdShortcode()
-        });
+        this.http = http;
+        this.httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpHeaders({ 'Content-Type': 'application/json' })
+        };
     }
     ngOnInit() {
+        this.baseUrl = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getApiHostname();
+        this.http.get(this.baseUrl + 'api/mobile/distributors/list/', this.httpOptions).subscribe(list => {
+            if (list['count'] > 0) {
+                this.distributors = list['items'];
+            }
+        });
+        this.generalForm = this.formBuilder.group({
+            shortcode: src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getUssdShortcode(),
+            current_sim: src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getCurrentSim()
+        });
     }
     save() {
         src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.setUssdShortcode(this.generalForm.get('shortcode').value);
+        src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.setCurrentSim(this.generalForm.get('current_sim').value);
         this.presentToast();
     }
     presentToast() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
             const toast = yield this.toastCtrl.create({
                 message: 'Enregistre avec succes',
                 duration: 2500,
@@ -140,12 +154,13 @@ let GeneralsPage = class GeneralsPage {
     }
 };
 GeneralsPage.ctorParameters = () => [
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormBuilder },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ToastController },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router }
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormBuilder },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.ToastController },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__.Router },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpClient }
 ];
-GeneralsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+GeneralsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
         selector: 'app-generals',
         template: _generals_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_generals_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -172,7 +187,7 @@ module.exports = "ion-header ion-toolbar ion-title h2 {\n  font-size: 1.1rem;\n 
   \*****************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\">\n\t\t\t<ion-back-button text=\"\" icon=\"chevron-back-outline\"></ion-back-button>\n\t\t</ion-buttons>\n\t\t<ion-title>Parametres Généraux</ion-title>\n\t</ion-toolbar>\n</ion-header>\n<ion-content fullscreen class=\"bg_color\">\n\t<form [formGroup]=\"generalForm\" (ngSubmit)=\"save()\" class=\"form\">\n\t\t<ion-list lines=\"none\">\n\t\t\t<ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n\t\t\t\t<ion-input type=\"text\" formControlName=\"shortcode\" placeholder=\"Code de transfert USSD\"></ion-input>\n\t\t\t</ion-item>\n\t\t\n\t\t</ion-list>\n\t</form>\n\t<ion-footer class=\"ion-no-border animate__animated animate__fadeInUp\">\n\t\t<ion-button size=\"small\" shape=\"block\" class=\"btn\" (click)=\"save()\">Sauvegarder</ion-button>\n\t</ion-footer>\n</ion-content>\n";
+module.exports = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\">\n\t\t\t<ion-back-button text=\"\" icon=\"chevron-back-outline\"></ion-back-button>\n\t\t</ion-buttons>\n\t\t<ion-title>Parametres Généraux</ion-title>\n\t</ion-toolbar>\n</ion-header>\n<ion-content fullscreen class=\"bg_color\">\n\t<form [formGroup]=\"generalForm\" (ngSubmit)=\"save()\" class=\"form\">\n\t\t<ion-list lines=\"none\">\n\t\t\t<ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n\t\t\t\t<ion-input type=\"text\" formControlName=\"shortcode\" placeholder=\"Code de transfert USSD\"></ion-input>\n\t\t\t</ion-item>\n\t\t\t<ion-item class=\"animate__animated animate__fadeInUp\" lines=\"none\">\n\t\t\t\t<ion-select mode=\"md\" formControlName=\"current_sim\" interface=\"action-sheet\">\n\t\t\t\t\t\t<ion-select-option disabled value=\"\">Numero distributeur</ion-select-option>\n\t\t\t\t\t<ion-select-option *ngFor=\"let distributor of distributors\" value=\"{{distributor.number}}\">\n           {{distributor.number}} | Solde : {{distributor.balance}} FCFA\n          \t</ion-select-option>\n\t\t\t\t</ion-select>\n\t\t\t</ion-item>\n\t\t\n\t\t</ion-list>\n\t</form>\n\t<ion-footer class=\"ion-no-border animate__animated animate__fadeInUp\">\n\t\t<ion-button size=\"small\" shape=\"block\" class=\"btn\" (click)=\"save()\">Sauvegarder</ion-button>\n\t</ion-footer>\n</ion-content>\n";
 
 /***/ })
 

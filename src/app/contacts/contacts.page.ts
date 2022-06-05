@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { Helper } from 'src/models/helper.models';
-import {IonLoaderService} from '../services/ion-loader.service'
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.page.html',
@@ -17,9 +16,8 @@ export class ContactsPage implements OnInit {
   }
   private baseUrl : string;
 
-  constructor(private http : HttpClient, private router : Router,public loadingService : IonLoaderService) {
+  constructor(private http : HttpClient, private router : Router) {
     this.baseUrl = Helper.getApiHostname();
-    this.loadingService.autoLoader();
     this.http.get(this.baseUrl+'api/mobile/contacts/list/',this.httpOptions).subscribe(list=>{
       if(list['count']>0){
         this.contacts = list['items'];

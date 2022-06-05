@@ -116,6 +116,7 @@ __webpack_require__.r(__webpack_exports__);
 
 let ShortformsPage = class ShortformsPage {
     constructor(formBuilder, toastCtrl, router, http) {
+        // load base url
         this.formBuilder = formBuilder;
         this.toastCtrl = toastCtrl;
         this.router = router;
@@ -123,27 +124,26 @@ let ShortformsPage = class ShortformsPage {
         this.httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders({ 'Content-Type': 'application/json' })
         };
-        // load base url
-        this.baseUrl = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getApiHostname();
-        this.shortCode = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getUssdShortcode();
-        this.dialmode = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getDialMode();
         if (this.router.getCurrentNavigation().extras.state) {
             this.agent = this.router.getCurrentNavigation().extras.state.number;
         }
         ;
+    }
+    ngOnInit() {
+        this.baseUrl = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getApiHostname();
+        this.shortCode = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getUssdShortcode();
+        this.dialmode = src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getDialMode();
+        this.depositForm = this.formBuilder.group({
+            distributor_number: src_models_helper_models__WEBPACK_IMPORTED_MODULE_2__.Helper.getCurrentSim(),
+            agent_number: this.agent.number,
+            passcode: '',
+            amount: '',
+        });
         this.http.get(this.baseUrl + 'api/mobile/distributors/list/', this.httpOptions).subscribe(list => {
             if (list['count'] > 0) {
                 this.distributors = list['items'];
             }
         });
-        this.depositForm = this.formBuilder.group({
-            distributor_number: '',
-            agent_number: this.agent.number,
-            passcode: '',
-            amount: '',
-        });
-    }
-    ngOnInit() {
     }
     send() {
         let form = {};

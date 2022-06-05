@@ -18,7 +18,7 @@ export class ShortformsPage implements OnInit {
   public depositForm ;
   private baseUrl : string ;
   private shortCode : string ;
-  public distributors ;
+  public distributors = [];
   public agent;
   private currentUser;
   private previous;
@@ -29,10 +29,7 @@ export class ShortformsPage implements OnInit {
       this.previous = this.router.getCurrentNavigation().extras.state.number;
       this.agent = this.router.getCurrentNavigation().extras.state.number;
     }
-    
-    
   }
-
   ngOnInit() {
     this.currentUser = Helper.getUserProfile();
     this.baseUrl = Helper.getApiHostname();
@@ -44,12 +41,14 @@ export class ShortformsPage implements OnInit {
    });
     this.http.get(this.baseUrl+'api/mobile/distributors/list/', this.httpOptions).subscribe(list=>{
       if(list['count'] > 0){
-        this.distributors = list['items'];
+        var current = Helper.getCurrentSim();
+        list['items'].forEach(element => {
+          if(element.number == current){
+            this.distributors.push(element);
+          }
+        });
       }
-   
     });
-
-
   }
   send(){
     let form = {};
